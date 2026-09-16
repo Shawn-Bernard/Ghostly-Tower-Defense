@@ -11,9 +11,8 @@ public class Tower : MonoBehaviour
     [SerializeField] GameObject bullet;
     [SerializeField] private bool canAttack;
 
-    //[SerializeField] UnityEvent attack;
 
-    [SerializeField] private List<GameObject> targets;
+    private List<GameObject> targets;
     private GameObject target;
 
     private void Awake()
@@ -29,14 +28,11 @@ public class Tower : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (targets != null)
+        if (target != null)
         {
+            float angle = GetAngle(target.transform.position, transform.position);
 
-            
-        }
-        if (canAttack && targets.Count > 0)
-        {
-            StartCoroutine(Attack());
+            transform.rotation = Quaternion.Euler(0, 0, angle);
         }
     }
 
@@ -45,10 +41,9 @@ public class Tower : MonoBehaviour
         if (collision.CompareTag("Enemy"))
         {
             targets.Add(collision.gameObject);
-            FindClosestTarget();
+
             if (canAttack && targets.Count > 0)
             {
-                Shoot();
                 StartCoroutine(Attack());
             }
             
@@ -60,13 +55,20 @@ public class Tower : MonoBehaviour
         if (collision.CompareTag("Enemy"))
         {
             targets.Remove(collision.gameObject);
+
+            // If the target left area, find a new one
+            if (collision.gameObject == target)
+            {
+                FindClosestTarget();
+            }
         }
     }
 
-    private float GetAngle(Vector2 targetPosition,Vector2 currentPosition )
+    private float GetAngle(Vector2 targetPosition,Vector2 fromPosition)
     {
-        Vector2 direction = targetPosition - currentPosition;
-        float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+        float angleOffset = 90f;
+        Vector2 direction = targetPosition - fromPosition;
+        float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg - angleOffset;
         return angle;
     }
 
@@ -74,20 +76,24 @@ public class Tower : MonoBehaviour
     {
         bullet.transform.position = transform.position;
         bullet.transform.rotation = transform.rotation;
-        Vector2 direction = target.transform.position - bullet.transform.position;
-        float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg - 90f;
+        
+        float angle = GetAngle(target.transform.position, bullet.transform.position);
+
         bullet.transform.rotation = Quaternion.Euler(0, 0, angle);
 
         bullet.SetActive(true);
     }
+    /// <summary>
+    /// Starts shoot and waits for cooldown = attack rate and checks for new targets 
+    /// </summary>
+    /// <returns></returns>
 
     IEnumerator Attack()
     {
-        FindClosestTarget();
-        //Shoot();
-
         canAttack = false;
-        
+
+        FindClosestTarget();
+        Shoot();
 
         float attackCooldown = 1 / attackRate;
 
@@ -95,13 +101,14 @@ public class Tower : MonoBehaviour
 
         canAttack = true;
 
-
-        if (target != null)
+        if (targets.Count > 0)
         {
-            //StartCoroutine(Attack());
+            StartCoroutine(Attack());
         }
     }
-
+    /// <summary>
+    /// This looks for the nearest enemy and makes them the new target
+    /// </summary>
     private void FindClosestTarget()
     {
         GameObject closestTarget = null;

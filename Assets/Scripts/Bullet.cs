@@ -4,6 +4,7 @@ public class Bullet : MonoBehaviour
 {
     [SerializeField] float moveSpeed;
 
+    // Change to health system
     Ghost ghost;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -24,13 +25,6 @@ public class Bullet : MonoBehaviour
             ghost = collision.GetComponent<Ghost>();
             ghost.Death();
             gameObject.SetActive(false);
-        }
-    }
-
-    private void OnTriggerExit2D(Collider2D collision)
-    {
-        if (collision.CompareTag("Enemy"))
-        {
         }
     }
 
