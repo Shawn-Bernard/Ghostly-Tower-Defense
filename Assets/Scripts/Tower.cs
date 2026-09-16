@@ -5,34 +5,39 @@ using UnityEngine.Events;
 
 public class Tower : MonoBehaviour
 {
-    [SerializeField] float AttackRate;
+    [SerializeField] float attackRate;
 
 
-    public GameObject bullet;
+    [SerializeField] GameObject bullet;
     [SerializeField] private bool canAttack;
 
-    [SerializeField] UnityEvent attack;
+    //[SerializeField] UnityEvent attack;
 
-    private List<GameObject> targets;
+    [SerializeField] private List<GameObject> targets;
     private GameObject target;
+
+    private void Awake()
+    {
+        canAttack = true;
+    }
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         targets = new List<GameObject>();
-        canAttack = true;
     }
 
     // Update is called once per frame
     void Update()
     {
-        /*
         if (targets != null)
         {
-            Vector2 direction = target.transform.position - transform.position;
-            float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-            transform.rotation = Quaternion.Euler(0, 0, angle);
+
+            
         }
-        */
+        if (canAttack && targets.Count > 0)
+        {
+            StartCoroutine(Attack());
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -40,12 +45,13 @@ public class Tower : MonoBehaviour
         if (collision.CompareTag("Enemy"))
         {
             targets.Add(collision.gameObject);
-
-
-            if (canAttack)
+            FindClosestTarget();
+            if (canAttack && targets.Count > 0)
             {
+                Shoot();
                 StartCoroutine(Attack());
             }
+            
         }
     }
 
@@ -54,23 +60,36 @@ public class Tower : MonoBehaviour
         if (collision.CompareTag("Enemy"))
         {
             targets.Remove(collision.gameObject);
-
-            if (collision.gameObject == target)
-            {
-                target = targets.Count > 0 ? targets[0] : null;
-            }
         }
+    }
+
+    private float GetAngle(Vector2 targetPosition,Vector2 currentPosition )
+    {
+        Vector2 direction = targetPosition - currentPosition;
+        float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+        return angle;
+    }
+
+    private void Shoot()
+    {
+        bullet.transform.position = transform.position;
+        bullet.transform.rotation = transform.rotation;
+        Vector2 direction = target.transform.position - bullet.transform.position;
+        float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg - 90f;
+        bullet.transform.rotation = Quaternion.Euler(0, 0, angle);
+
+        bullet.SetActive(true);
     }
 
     IEnumerator Attack()
     {
         FindClosestTarget();
+        //Shoot();
 
         canAttack = false;
+        
 
-        target.SetActive(false);
-
-        float attackCooldown = 1 / AttackRate;
+        float attackCooldown = 1 / attackRate;
 
         yield return new WaitForSeconds(attackCooldown);
 
@@ -79,7 +98,7 @@ public class Tower : MonoBehaviour
 
         if (target != null)
         {
-            StartCoroutine(Attack());
+            //StartCoroutine(Attack());
         }
     }
 
