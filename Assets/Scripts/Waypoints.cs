@@ -24,18 +24,7 @@ public class Waypoints : MonoBehaviour
     {
         
     }
-    /*
-    private void SetWaypoint()
-    {
-        currentWaypoint = waypoints[currentWaypointIndex];
 
-        currentWaypointIndex++;
-
-        if (currentWaypointIndex >= waypoints.Count)
-        {
-            currentWaypointIndex = 0;
-        }
-    }*/
     private void OnEnable()
     {
         waypointEvent.gameEvent += GetWaypoint;
@@ -54,5 +43,30 @@ public class Waypoints : MonoBehaviour
         }
 
         returnWaypoint?.Invoke(waypoints[index]);
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.green;
+
+        Transform previousWaypoint = null;
+
+        for (int i = 0; i < transform.childCount; i++)
+        {
+            Transform waypoint = transform.GetChild(i);
+
+            if (!waypoint.CompareTag("Waypoint"))
+                continue;
+
+            if (previousWaypoint != null)
+            {
+                Gizmos.DrawLine(
+                    previousWaypoint.position,
+                    waypoint.position
+                );
+            }
+
+            previousWaypoint = waypoint;
+        }
     }
 }
