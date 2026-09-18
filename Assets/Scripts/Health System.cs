@@ -15,7 +15,7 @@ public class HealthSystem : MonoBehaviour, IDamageable
     public void TakeDamage(int damage)
     {
         currentHealth = Mathf.Max(currentHealth - damage,0);
-        Debug.Log($"Current Health : {currentHealth}");
+        //Debug.Log($"Current Health : {currentHealth}");
 
         if (currentHealth <= 0 )
         {

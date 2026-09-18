@@ -4,11 +4,12 @@ using UnityEngine;
 
 public class Tower : MonoBehaviour
 {
-    [SerializeField] float attackRate;
+    [SerializeField] private float attackRate;
 
 
-    [SerializeField] GameObject bullet;
+    [SerializeField] private GameObject bullet;
     [SerializeField] private bool canAttack;
+    [SerializeField] private bool isSelected;
 
 
     private List<GameObject> targets;
@@ -37,6 +38,8 @@ public class Tower : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        if (isSelected) return;
+
         if (collision.CompareTag("Enemy"))
         {
             targets.Add(collision.gameObject);
@@ -51,6 +54,8 @@ public class Tower : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D collision)
     {
+        if (isSelected) return;
+
         if (collision.CompareTag("Enemy"))
         {
             targets.Remove(collision.gameObject);
@@ -61,6 +66,36 @@ public class Tower : MonoBehaviour
                 FindClosestTarget();
             }
         }
+    }
+
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        if (isSelected) return;
+
+        if (collision.CompareTag("Enemy"))
+        {
+            targets.Add(collision.gameObject);
+
+            if (canAttack && targets.Count > 0)
+            {
+                StartCoroutine(Attack());
+            }
+
+        }
+    }
+
+    public void Selected()
+    {
+        isSelected = true;
+        gameObject.SetActive(false);
+    }
+
+    public void Unselected()
+    {
+        isSelected = false;
+        gameObject.SetActive(true);
+        //Bug shoots at random direction when back in
+        canAttack = true;
     }
 
     private float GetAngle(Vector2 targetPosition,Vector2 fromPosition)
@@ -110,6 +145,8 @@ public class Tower : MonoBehaviour
     /// </summary>
     private void FindClosestTarget()
     {
+        if (targets.Count < 0 || targets == null) return;
+        
         GameObject closestTarget = null;
 
         foreach (GameObject target in targets)
