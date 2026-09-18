@@ -49,11 +49,5 @@ public class Ghost : MonoBehaviour
         
     }
 
-    public void Death()
-    {
-        gameObject.SetActive(false);
-        currentWaypointIndex = 0;
-    }
-
 
 }

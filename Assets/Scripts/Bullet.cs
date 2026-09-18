@@ -1,37 +1,56 @@
+using System.Collections;
+using Unity.IO.LowLevel.Unsafe;
 using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
-    [SerializeField] float moveSpeed;
+    [SerializeField] protected float moveSpeed;
+    [SerializeField] protected int damage;
 
-    // Change to health system
-    Ghost ghost;
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    protected IDamageable damageable;
+
+    private Transform originalParent;
+
+    private void Awake()
     {
-        gameObject.SetActive(false);
+        originalParent = transform.parent;
     }
 
     // Update is called once per frame
     void Update()
     {
-        transform.position = transform.position + transform.up * moveSpeed * Time.deltaTime;
+        HandleMovement();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Enemy"))
         {
-            ghost = collision.GetComponent<Ghost>();
-            ghost.Death();
-            gameObject.SetActive(false);
+            damageable = collision.GetComponent<IDamageable>();
+            HandleHit();
         }
     }
 
-    private void OnDrawGizmos()
+    public virtual void HandleMovement()
     {
-        Gizmos.color = Color.green;
-
-        Gizmos.DrawLine(transform.position, transform.position + transform.up * 3);
+        transform.position = transform.position + transform.up * moveSpeed * Time.deltaTime;
     }
+
+    public virtual void HandleHit()
+    {
+        if (damageable == null) return;
+
+        damageable.TakeDamage(damage);
+
+        gameObject.SetActive(false);
+        transform.SetParent(originalParent);
+
+        damageable = null;
+    }
+
+    private void OnEnable()
+    {
+        transform.SetParent(null);
+    }
+
 }
