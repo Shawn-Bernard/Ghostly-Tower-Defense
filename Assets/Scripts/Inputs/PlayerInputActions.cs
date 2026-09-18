@@ -26,7 +26,20 @@ public class PlayerInputActions : ScriptableObject, InputActions.IPlayerActions
 
     #endregion
 
+    #region Slot 1 Events
+    public event UnityAction Slot1StartedEvent;
+    public event UnityAction Slot1PerformedEvent;
+    #endregion
 
+    #region Slot 2 Events
+    public event UnityAction Slot2StartedEvent;
+    public event UnityAction Slot2PerformedEvent;
+    #endregion
+
+    #region Slot 3 Events
+    public event UnityAction Slot3StartedEvent;
+    public event UnityAction Slot3PerformedEvent;
+    #endregion
     public void OnMove(InputAction.CallbackContext context)
     {
         MoveEvent?.Invoke(context.ReadValue<Vector2>());
@@ -72,7 +85,20 @@ public class PlayerInputActions : ScriptableObject, InputActions.IPlayerActions
             InteractPerformedEvent?.Invoke();
         }
     }
+    public void OnTowerSlot1(InputAction.CallbackContext context)
+    {
+        throw new NotImplementedException();
+    }
 
+    public void OnTowerSlot2(InputAction.CallbackContext context)
+    {
+        throw new NotImplementedException();
+    }
+
+    public void OnTowerSlot3(InputAction.CallbackContext context)
+    {
+        throw new NotImplementedException();
+    }
     private void OnEnable()
     {
         inputActions = new InputActions();

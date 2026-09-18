@@ -11,17 +11,15 @@ public class Tower : MonoBehaviour
     [SerializeField] private bool canAttack;
     [SerializeField] private bool isSelected;
 
+    [SerializeField] private TowerEvent towerEvent;
 
     private List<GameObject> targets;
     private GameObject target;
 
-    private void Awake()
-    {
-        canAttack = true;
-    }
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        canAttack = true;
         targets = new List<GameObject>();
     }
 
@@ -145,8 +143,8 @@ public class Tower : MonoBehaviour
     /// </summary>
     private void FindClosestTarget()
     {
-        if (targets.Count < 0 || targets == null) return;
-        
+        if (targets == null || targets.Count == 0) return;
+
         GameObject closestTarget = null;
 
         foreach (GameObject target in targets)
@@ -161,6 +159,17 @@ public class Tower : MonoBehaviour
         }
 
         target = closestTarget;
+    }
+
+    private void OnEnable()
+    {
+        Debug.Log("Here");
+        towerEvent.RegisterTower(this);
+    }
+
+    private void OnDisable()
+    {
+        towerEvent.UnregisterTower(this);
     }
 
     private void OnDrawGizmos()

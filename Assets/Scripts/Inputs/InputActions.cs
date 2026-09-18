@@ -118,6 +118,33 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": ""Hold"",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Tower Slot 1"",
+                    ""type"": ""Button"",
+                    ""id"": ""b6709ff2-2bb0-4559-b5d4-c56273b7a8f1"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Tower Slot 2"",
+                    ""type"": ""Button"",
+                    ""id"": ""961ee1dd-1c74-4b7a-a1c6-4c332834483e"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Tower Slot 3"",
+                    ""type"": ""Button"",
+                    ""id"": ""83b5e3c2-c0ef-4ca1-8813-1ffb16c465fb"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -239,6 +266,39 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": ""Gamepad"",
                     ""action"": ""Interact"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""cb0c31e3-404d-498d-a9dd-949266f91ade"",
+                    ""path"": ""<Keyboard>/1"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Tower Slot 1"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""b0f5d071-cda9-4d84-b253-ba36305b0c36"",
+                    ""path"": ""<Keyboard>/2"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Tower Slot 2"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""2e387473-6857-408e-ab1f-90dfaca16db0"",
+                    ""path"": ""<Keyboard>/3"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Tower Slot 3"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -829,6 +889,9 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
         m_Player_Move = m_Player.FindAction("Move", throwIfNotFound: true);
         m_Player_Action = m_Player.FindAction("Action", throwIfNotFound: true);
         m_Player_Interact = m_Player.FindAction("Interact", throwIfNotFound: true);
+        m_Player_TowerSlot1 = m_Player.FindAction("Tower Slot 1", throwIfNotFound: true);
+        m_Player_TowerSlot2 = m_Player.FindAction("Tower Slot 2", throwIfNotFound: true);
+        m_Player_TowerSlot3 = m_Player.FindAction("Tower Slot 3", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Navigate = m_UI.FindAction("Navigate", throwIfNotFound: true);
@@ -925,6 +988,9 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Move;
     private readonly InputAction m_Player_Action;
     private readonly InputAction m_Player_Interact;
+    private readonly InputAction m_Player_TowerSlot1;
+    private readonly InputAction m_Player_TowerSlot2;
+    private readonly InputAction m_Player_TowerSlot3;
     /// <summary>
     /// Provides access to input actions defined in input action map "Player".
     /// </summary>
@@ -948,6 +1014,18 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
         /// Provides access to the underlying input action "Player/Interact".
         /// </summary>
         public InputAction @Interact => m_Wrapper.m_Player_Interact;
+        /// <summary>
+        /// Provides access to the underlying input action "Player/TowerSlot1".
+        /// </summary>
+        public InputAction @TowerSlot1 => m_Wrapper.m_Player_TowerSlot1;
+        /// <summary>
+        /// Provides access to the underlying input action "Player/TowerSlot2".
+        /// </summary>
+        public InputAction @TowerSlot2 => m_Wrapper.m_Player_TowerSlot2;
+        /// <summary>
+        /// Provides access to the underlying input action "Player/TowerSlot3".
+        /// </summary>
+        public InputAction @TowerSlot3 => m_Wrapper.m_Player_TowerSlot3;
         /// <summary>
         /// Provides access to the underlying input action map instance.
         /// </summary>
@@ -983,6 +1061,15 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
             @Interact.started += instance.OnInteract;
             @Interact.performed += instance.OnInteract;
             @Interact.canceled += instance.OnInteract;
+            @TowerSlot1.started += instance.OnTowerSlot1;
+            @TowerSlot1.performed += instance.OnTowerSlot1;
+            @TowerSlot1.canceled += instance.OnTowerSlot1;
+            @TowerSlot2.started += instance.OnTowerSlot2;
+            @TowerSlot2.performed += instance.OnTowerSlot2;
+            @TowerSlot2.canceled += instance.OnTowerSlot2;
+            @TowerSlot3.started += instance.OnTowerSlot3;
+            @TowerSlot3.performed += instance.OnTowerSlot3;
+            @TowerSlot3.canceled += instance.OnTowerSlot3;
         }
 
         /// <summary>
@@ -1003,6 +1090,15 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
             @Interact.started -= instance.OnInteract;
             @Interact.performed -= instance.OnInteract;
             @Interact.canceled -= instance.OnInteract;
+            @TowerSlot1.started -= instance.OnTowerSlot1;
+            @TowerSlot1.performed -= instance.OnTowerSlot1;
+            @TowerSlot1.canceled -= instance.OnTowerSlot1;
+            @TowerSlot2.started -= instance.OnTowerSlot2;
+            @TowerSlot2.performed -= instance.OnTowerSlot2;
+            @TowerSlot2.canceled -= instance.OnTowerSlot2;
+            @TowerSlot3.started -= instance.OnTowerSlot3;
+            @TowerSlot3.performed -= instance.OnTowerSlot3;
+            @TowerSlot3.canceled -= instance.OnTowerSlot3;
         }
 
         /// <summary>
@@ -1324,6 +1420,27 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnInteract(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Tower Slot 1" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnTowerSlot1(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Tower Slot 2" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnTowerSlot2(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Tower Slot 3" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnTowerSlot3(InputAction.CallbackContext context);
     }
     /// <summary>
     /// Interface to implement callback methods for all input action callbacks associated with input actions defined by "UI" which allows adding and removing callbacks.
