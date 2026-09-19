@@ -7,7 +7,7 @@ public class Ghost : MonoBehaviour
     [SerializeField] private float distanceWaypointCheck;
 
     private Vector2 currentWaypoint;
-    [SerializeField] private int currentWaypointIndex;
+    private int currentWaypointIndex;
     [SerializeField] private WaypointEvent waypointEvent;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
