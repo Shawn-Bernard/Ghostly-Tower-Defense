@@ -145,6 +145,24 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Tower Slot 4"",
+                    ""type"": ""Button"",
+                    ""id"": ""1122b534-096a-4a39-a87d-00cb2dbf5bd2"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Tower Slot 5"",
+                    ""type"": ""Button"",
+                    ""id"": ""0df5e246-0110-411e-ac7a-7c9292a1f2a7"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -299,6 +317,28 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""Tower Slot 3"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""3eea1811-1a58-4dcb-92ee-6ff4164708d7"",
+                    ""path"": ""<Keyboard>/4"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Tower Slot 4"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""9eb3cac7-3c7d-4a57-b592-900be11eae7b"",
+                    ""path"": ""<Keyboard>/5"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Tower Slot 5"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -892,6 +932,8 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
         m_Player_TowerSlot1 = m_Player.FindAction("Tower Slot 1", throwIfNotFound: true);
         m_Player_TowerSlot2 = m_Player.FindAction("Tower Slot 2", throwIfNotFound: true);
         m_Player_TowerSlot3 = m_Player.FindAction("Tower Slot 3", throwIfNotFound: true);
+        m_Player_TowerSlot4 = m_Player.FindAction("Tower Slot 4", throwIfNotFound: true);
+        m_Player_TowerSlot5 = m_Player.FindAction("Tower Slot 5", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Navigate = m_UI.FindAction("Navigate", throwIfNotFound: true);
@@ -991,6 +1033,8 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_TowerSlot1;
     private readonly InputAction m_Player_TowerSlot2;
     private readonly InputAction m_Player_TowerSlot3;
+    private readonly InputAction m_Player_TowerSlot4;
+    private readonly InputAction m_Player_TowerSlot5;
     /// <summary>
     /// Provides access to input actions defined in input action map "Player".
     /// </summary>
@@ -1026,6 +1070,14 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
         /// Provides access to the underlying input action "Player/TowerSlot3".
         /// </summary>
         public InputAction @TowerSlot3 => m_Wrapper.m_Player_TowerSlot3;
+        /// <summary>
+        /// Provides access to the underlying input action "Player/TowerSlot4".
+        /// </summary>
+        public InputAction @TowerSlot4 => m_Wrapper.m_Player_TowerSlot4;
+        /// <summary>
+        /// Provides access to the underlying input action "Player/TowerSlot5".
+        /// </summary>
+        public InputAction @TowerSlot5 => m_Wrapper.m_Player_TowerSlot5;
         /// <summary>
         /// Provides access to the underlying input action map instance.
         /// </summary>
@@ -1070,6 +1122,12 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
             @TowerSlot3.started += instance.OnTowerSlot3;
             @TowerSlot3.performed += instance.OnTowerSlot3;
             @TowerSlot3.canceled += instance.OnTowerSlot3;
+            @TowerSlot4.started += instance.OnTowerSlot4;
+            @TowerSlot4.performed += instance.OnTowerSlot4;
+            @TowerSlot4.canceled += instance.OnTowerSlot4;
+            @TowerSlot5.started += instance.OnTowerSlot5;
+            @TowerSlot5.performed += instance.OnTowerSlot5;
+            @TowerSlot5.canceled += instance.OnTowerSlot5;
         }
 
         /// <summary>
@@ -1099,6 +1157,12 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
             @TowerSlot3.started -= instance.OnTowerSlot3;
             @TowerSlot3.performed -= instance.OnTowerSlot3;
             @TowerSlot3.canceled -= instance.OnTowerSlot3;
+            @TowerSlot4.started -= instance.OnTowerSlot4;
+            @TowerSlot4.performed -= instance.OnTowerSlot4;
+            @TowerSlot4.canceled -= instance.OnTowerSlot4;
+            @TowerSlot5.started -= instance.OnTowerSlot5;
+            @TowerSlot5.performed -= instance.OnTowerSlot5;
+            @TowerSlot5.canceled -= instance.OnTowerSlot5;
         }
 
         /// <summary>
@@ -1441,6 +1505,20 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnTowerSlot3(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Tower Slot 4" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnTowerSlot4(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Tower Slot 5" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnTowerSlot5(InputAction.CallbackContext context);
     }
     /// <summary>
     /// Interface to implement callback methods for all input action callbacks associated with input actions defined by "UI" which allows adding and removing callbacks.

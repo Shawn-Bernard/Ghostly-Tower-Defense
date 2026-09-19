@@ -14,7 +14,7 @@ public class Tower : MonoBehaviour
     [SerializeField] private TowerEvent towerEvent;
 
     private List<GameObject> targets;
-    private GameObject target;
+    [SerializeField] private GameObject target;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -40,7 +40,7 @@ public class Tower : MonoBehaviour
 
         if (collision.CompareTag("Enemy"))
         {
-            targets.Add(collision.gameObject);
+            if (!targets.Contains(collision.gameObject)) targets.Add(collision.gameObject);
 
             if (canAttack && targets.Count > 0)
             {
@@ -61,30 +61,18 @@ public class Tower : MonoBehaviour
             // If the target left area, find a new one
             if (collision.gameObject == target)
             {
+                Debug.Log("target left the area");
                 FindClosestTarget();
             }
         }
     }
 
-    private void OnTriggerStay2D(Collider2D collision)
-    {
-        if (isSelected) return;
-
-        if (collision.CompareTag("Enemy"))
-        {
-            targets.Add(collision.gameObject);
-
-            if (canAttack && targets.Count > 0)
-            {
-                StartCoroutine(Attack());
-            }
-
-        }
-    }
-
     public void Selected()
     {
+        canAttack = true;
+        StopCoroutine(Attack());
         isSelected = true;
+        target = null;
         gameObject.SetActive(false);
     }
 
@@ -106,14 +94,24 @@ public class Tower : MonoBehaviour
 
     private void Shoot()
     {
-        bullet.transform.position = transform.position;
-        bullet.transform.rotation = transform.rotation;
+        if (target == null) return;
+
+        if (!target.activeInHierarchy)
+        {
+            target = null;
+        }
+        else
+        {
+            bullet.transform.position = transform.position;
+            bullet.transform.rotation = transform.rotation;
         
-        float angle = GetAngle(target.transform.position, bullet.transform.position);
+            float angle = GetAngle(target.transform.position, bullet.transform.position);
 
-        bullet.transform.rotation = Quaternion.Euler(0, 0, angle);
+            bullet.transform.rotation = Quaternion.Euler(0, 0, angle);
 
-        bullet.SetActive(true);
+            bullet.SetActive(true);
+
+        }
     }
     /// <summary>
     /// Starts shoot and waits for cooldown = attack rate and checks for new targets 
@@ -145,6 +143,9 @@ public class Tower : MonoBehaviour
     {
         if (targets == null || targets.Count == 0) return;
 
+        
+        targets.RemoveAll(target => !target.activeInHierarchy);
+
         GameObject closestTarget = null;
 
         foreach (GameObject target in targets)
@@ -157,19 +158,26 @@ public class Tower : MonoBehaviour
                 closestTarget = target;
             }
         }
-
-        target = closestTarget;
+        if (closestTarget == null)
+        {
+            target = null;
+        }
+        else
+        {
+            target = closestTarget;
+        }
     }
 
     private void OnEnable()
     {
-        Debug.Log("Here");
         towerEvent.RegisterTower(this);
     }
 
     private void OnDisable()
     {
         towerEvent.UnregisterTower(this);
+        target = null;
+        StopCoroutine(Attack());
     }
 
     private void OnDrawGizmos()

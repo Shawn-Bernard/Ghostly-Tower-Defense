@@ -40,6 +40,16 @@ public class PlayerInputActions : ScriptableObject, InputActions.IPlayerActions
     public event UnityAction Slot3StartedEvent;
     public event UnityAction Slot3PerformedEvent;
     #endregion
+
+    #region Slot 4 Events
+    public event UnityAction Slot4StartedEvent;
+    public event UnityAction Slot4PerformedEvent;
+    #endregion
+
+    #region Slot 5 Events
+    public event UnityAction Slot5StartedEvent;
+    public event UnityAction Slot5PerformedEvent;
+    #endregion
     public void OnMove(InputAction.CallbackContext context)
     {
         MoveEvent?.Invoke(context.ReadValue<Vector2>());
@@ -87,17 +97,66 @@ public class PlayerInputActions : ScriptableObject, InputActions.IPlayerActions
     }
     public void OnTowerSlot1(InputAction.CallbackContext context)
     {
-        throw new NotImplementedException();
+        if (context.started)
+        {
+            Slot1PerformedEvent?.Invoke();
+        }
+
+        if (context.performed)
+        {
+            Slot1StartedEvent?.Invoke();
+        }
     }
 
     public void OnTowerSlot2(InputAction.CallbackContext context)
     {
-        throw new NotImplementedException();
+        if (context.started)
+        {
+            Slot2PerformedEvent?.Invoke();
+        }
+
+        if (context.performed)
+        {
+            Slot2StartedEvent?.Invoke();
+        }
     }
 
     public void OnTowerSlot3(InputAction.CallbackContext context)
     {
-        throw new NotImplementedException();
+        if (context.started)
+        {
+            Slot3PerformedEvent?.Invoke();
+        }
+
+        if (context.performed)
+        {
+            Slot3StartedEvent?.Invoke();
+        }
+    }
+    public void OnTowerSlot4(InputAction.CallbackContext context)
+    {
+        if (context.started)
+        {
+            Slot4PerformedEvent?.Invoke();
+        }
+
+        if (context.performed)
+        {
+            Slot4StartedEvent?.Invoke();
+        }
+    }
+
+    public void OnTowerSlot5(InputAction.CallbackContext context)
+    {
+        if (context.started)
+        {
+            Slot5PerformedEvent?.Invoke();
+        }
+
+        if (context.performed)
+        {
+            Slot5StartedEvent?.Invoke();
+        }
     }
     private void OnEnable()
     {

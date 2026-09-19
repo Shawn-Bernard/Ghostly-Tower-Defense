@@ -19,15 +19,15 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
-        Vector3 screenPosition = cursorPosition;
+        Vector3 onScreenPosition = cursorPosition;
 
-        screenPosition.z = 0;
+        onScreenPosition.z = 0;
 
-        transform.position = screenPosition;
+        transform.position = onScreenPosition;
 
         if (selectedTower != null )
         {
-            selectedTower.transform.position = screenPosition;
+            selectedTower.transform.position = onScreenPosition;
         }
     }
 
@@ -37,32 +37,28 @@ public class Player : MonoBehaviour
     }
     private void Action()
     {
-        Debug.Log("Action was called");
 
-        Vector3 screenPosition = cursorPosition;
+        Vector3 onScreenPosition = cursorPosition;
 
-        if (selectedTower != null)
+
+        RaycastHit2D hit = Physics2D.Raycast(onScreenPosition, Vector2.zero);
+
+        if (hit.collider == null) return;
+        if (hit.collider.TryGetComponent<Tower>(out Tower tower))
         {
-            selectedTower.Unselected();
-            selectedTower = null;
-        }
-        else
-        {
-            RaycastHit2D hit = Physics2D.Raycast(screenPosition, Vector2.zero);
-
-            if (hit.collider.TryGetComponent<Tower>(out Tower tower))
+            if (selectedTower == null)
             {
-                if (selectedTower == tower)
-                {
-                    selectedTower.Unselected();
-                    selectedTower = null;
-                }
-                else
-                {
-                    selectedTower = tower;
-                    selectedTower.Selected();
-                }
+                selectedTower = tower;
+                selectedTower.Selected();
+            }
+        }
 
+        if (hit.collider.CompareTag("Placeable"))
+        {
+            if (selectedTower != null)
+            {
+                selectedTower.Unselected();
+                selectedTower = null;
             }
         }
     }
