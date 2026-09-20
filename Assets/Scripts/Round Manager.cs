@@ -27,10 +27,10 @@ public class RoundManager : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Escape)) 
         {
-            StartCoroutine(SpawnWave());
+            StartRound();
         }
     }
-    private IEnumerator SpawnWave()
+    private IEnumerator SpawnWaves()
     {
         currentRound++;
 
@@ -53,6 +53,12 @@ public class RoundManager : MonoBehaviour
 
         Instantiate(ghost, (Vector3)spawnPoint,Quaternion.identity);
         ghost.gameObject.SetActive(true);
+    }
+
+    private void StartRound()
+    {
+        currentRound++;
+        StartCoroutine(SpawnWaves());
     }
 
 
