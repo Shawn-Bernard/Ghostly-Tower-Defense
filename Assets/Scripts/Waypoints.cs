@@ -6,17 +6,10 @@ public class Waypoints : MonoBehaviour
 {
     private List<Vector2> waypoints;
     [SerializeField] private WaypointEvent waypointEvent;
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+
+    private void Awake()
     {
-        waypoints = new List<Vector2>();
-        for (int i = 0; i < transform.childCount; i++)
-        {
-            if (transform.GetChild(i).CompareTag("Waypoint"))
-            {
-                waypoints.Add(transform.GetChild(i).position);
-            }
-        }
+        AddWaypoints();
     }
 
     // Update is called once per frame
@@ -43,6 +36,18 @@ public class Waypoints : MonoBehaviour
         }
 
         returnWaypoint?.Invoke(waypoints[index]);
+    }
+
+    private void AddWaypoints()
+    {
+        waypoints = new List<Vector2>();
+        for (int i = 0; i < transform.childCount; i++)
+        {
+            if (transform.GetChild(i).CompareTag("Waypoint"))
+            {
+                waypoints.Add(transform.GetChild(i).position);
+            }
+        }
     }
 
     private void OnDrawGizmos()

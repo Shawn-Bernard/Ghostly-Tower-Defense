@@ -14,7 +14,7 @@ public class Tower : MonoBehaviour
     [SerializeField] private TowerEvent towerEvent;
 
     private List<GameObject> targets;
-    [SerializeField] private GameObject target;
+    private GameObject target;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -28,6 +28,9 @@ public class Tower : MonoBehaviour
     {
         if (target != null)
         {
+            if (!target.activeInHierarchy) target = null;
+
+
             float angle = GetAngle(target.transform.position, transform.position);
 
             transform.rotation = Quaternion.Euler(0, 0, angle);
@@ -61,7 +64,7 @@ public class Tower : MonoBehaviour
             // If the target left area, find a new one
             if (collision.gameObject == target)
             {
-                Debug.Log("target left the area");
+                target = null;
                 FindClosestTarget();
             }
         }
