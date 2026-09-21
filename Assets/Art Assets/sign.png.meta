@@ -1,19 +1,10 @@
 fileFormatVersion: 2
-guid: c69e8bafba6a49e4f97357999b1c62bd
+guid: fa41b3ea18dc8fb4ebcebdc46f5282bc
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -4556493988017820929
-    second: ghost sprite back _0
-  - first:
-      213: 2664148645899254769
-    second: ghost sprite back _1
-  - first:
-      213: 682674638130857065
-    second: ghost sprite back _2
-  - first:
-      213: 3257003551906176959
-    second: ghost sprite back _3
+      213: 7168540986364394743
+    second: sign_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -60,7 +51,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 64
+  spritePixelsToUnits: 32
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -109,89 +100,23 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: ghost sprite back _0
+      name: sign_0
       rect:
         serializedVersion: 2
-        x: 7
-        y: 79
-        width: 43
-        height: 44
+        x: 46
+        y: 44
+        width: 132
+        height: 52
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: ffaaef6fbd414c0c0800000000000000
-      internalID: -4556493988017820929
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: ghost sprite back _1
-      rect:
-        serializedVersion: 2
-        x: 61
-        y: 77
-        width: 43
-        height: 45
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 1fbb9a30415f8f420800000000000000
-      internalID: 2664148645899254769
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: ghost sprite back _2
-      rect:
-        serializedVersion: 2
-        x: 7
-        y: 32
-        width: 42
-        height: 44
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 96445f667f8597900800000000000000
-      internalID: 682674638130857065
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: ghost sprite back _3
-      rect:
-        serializedVersion: 2
-        x: 62
-        y: 30
-        width: 42
-        height: 47
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: fbf9d8f5973333d20800000000000000
-      internalID: 3257003551906176959
+      spriteID: 7fcf31aeb06cb7360800000000000000
+      internalID: 7168540986364394743
       vertices: []
       indices: 
       edges: []
@@ -200,7 +125,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: f05da2964528a354ab8cac8723efb3b1
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
@@ -210,10 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      ghost sprite back _0: -4556493988017820929
-      ghost sprite back _1: 2664148645899254769
-      ghost sprite back _2: 682674638130857065
-      ghost sprite back _3: 3257003551906176959
+      sign_0: 7168540986364394743
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
