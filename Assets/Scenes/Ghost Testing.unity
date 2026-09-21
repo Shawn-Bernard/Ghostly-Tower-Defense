@@ -441,7 +441,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 48b8c5cdbdaa22749aff7f39017e1fa6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Boomerang
-  moveSpeed: 11
+  moveSpeed: 20
   damage: 1
   range: 5
   curveRange: 0.5
@@ -793,7 +793,7 @@ GameObject:
   - component: {fileID: 328714379}
   - component: {fileID: 328714378}
   m_Layer: 0
-  m_Name: Wave Manager
+  m_Name: Round Manager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

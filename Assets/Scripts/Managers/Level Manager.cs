@@ -81,9 +81,8 @@ public class LevelManager : MonoBehaviour
 
     public void LoadMainMenu()
     {
-        LoadScene("Main Menu");
         onMainMenu.RaiseEvent();
-        
+        LoadScene("Main Menu");
     }
 
     public void LoadGameplay()

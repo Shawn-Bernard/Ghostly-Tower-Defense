@@ -4,7 +4,7 @@ using UnityEngine.SceneManagement;
 [DefaultExecutionOrder(-100)]
 public static class PerformBootLoad
 {
-    const string sceneName = "BootLoader";
+    const string sceneName = "Boot Loader";
     [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.BeforeSceneLoad)]
     public static void Execute()
     {

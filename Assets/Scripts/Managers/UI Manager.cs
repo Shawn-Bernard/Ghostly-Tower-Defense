@@ -9,6 +9,10 @@ public class UIManager : MonoBehaviour
     [SerializeField] GameState gameplayState;
     [SerializeField] GameState mainMenuState;
     [SerializeField] GameState pauseMenuState;
+
+    [SerializeField] VoidEvent OnGameplay;
+    [SerializeField] VoidEvent OnMainMenu;
+
     public void EnableMainMenu()
     {
         DisableAllMenus();
@@ -39,6 +43,9 @@ public class UIManager : MonoBehaviour
         mainMenuState.onEnterState += EnableMainMenu;
         gameplayState.onEnterState += EnableGameplay;
         pauseMenuState.onEnterState += EnablePauseMenu;
+
+        OnGameplay.gameEvent += EnableGameplay;
+        OnMainMenu.gameEvent += EnableMainMenu;
     }
 
     private void OnDisable()
@@ -46,5 +53,8 @@ public class UIManager : MonoBehaviour
         mainMenuState.onEnterState -= EnableMainMenu;
         gameplayState.onEnterState -= EnableGameplay;
         pauseMenuState.onEnterState -= EnablePauseMenu;
+
+        OnGameplay.gameEvent -= EnableGameplay;
+        OnMainMenu.gameEvent -= EnableMainMenu;
     }
 }
