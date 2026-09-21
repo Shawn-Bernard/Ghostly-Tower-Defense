@@ -252,8 +252,8 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 7.9313602, y: 2.81839, z: 0}
-  m_LocalScale: {x: 3.59, y: 3.59, z: 3.59}
-  m_ConstrainProportionsScale: 1
+  m_LocalScale: {x: 3.59, y: 3.59, z: 0}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -267,7 +267,7 @@ GameObject:
   m_Component:
   - component: {fileID: 56153101}
   - component: {fileID: 56153102}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Tower Visual
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -336,7 +336,7 @@ SpriteRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_MaskInteraction: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 75f5f34dc1b5347e0b8351032682f224, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -422,7 +422,7 @@ GameObject:
   - component: {fileID: 209384519}
   - component: {fileID: 209384518}
   - component: {fileID: 209384517}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Boomerang
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -720,8 +720,8 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -7.5686398, y: 2.81839, z: 0}
-  m_LocalScale: {x: 3.59, y: 3.59, z: 3.59}
-  m_ConstrainProportionsScale: 1
+  m_LocalScale: {x: 3.59, y: 3.59, z: 0}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -793,7 +793,7 @@ GameObject:
   - component: {fileID: 328714379}
   - component: {fileID: 328714378}
   m_Layer: 0
-  m_Name: Wave Manager
+  m_Name: Round Manager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -821,6 +821,7 @@ MonoBehaviour:
   activeGhosts: []
   ghostTypes:
   - {fileID: 3979777220852619386, guid: acdeff8eb2eb30b49962f06487d30820, type: 3}
+  startRoundEvent: {fileID: 11400000, guid: 47f32a537b8410a43bea4bb08eeade55, type: 2}
 --- !u!4 &328714379
 Transform:
   m_ObjectHideFlags: 0
@@ -910,7 +911,7 @@ GameObject:
   - component: {fileID: 482438952}
   - component: {fileID: 482438954}
   - component: {fileID: 482438955}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Bullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1366,7 +1367,7 @@ GameObject:
   m_Component:
   - component: {fileID: 937042805}
   - component: {fileID: 937042806}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Tower Visual
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1435,7 +1436,7 @@ SpriteRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_MaskInteraction: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 75f5f34dc1b5347e0b8351032682f224, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -1458,7 +1459,7 @@ GameObject:
   - component: {fileID: 1147360542}
   - component: {fileID: 1147360541}
   - component: {fileID: 1147360540}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Tower
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1546,7 +1547,7 @@ GameObject:
   - component: {fileID: 1520076500}
   - component: {fileID: 1520076499}
   - component: {fileID: 1520076498}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Tower
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1767,6 +1768,14 @@ PrefabInstance:
     - target: {fileID: 6658551655142753133, guid: a9b4c3e424661c147969fb669ee90099, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8988084523544548269, guid: a9b4c3e424661c147969fb669ee90099, type: 3}
+      propertyPath: layerMask
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 8988084523544548269, guid: a9b4c3e424661c147969fb669ee90099, type: 3}
+      propertyPath: raycastDistance
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

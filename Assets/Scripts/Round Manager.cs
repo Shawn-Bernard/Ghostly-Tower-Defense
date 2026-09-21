@@ -16,6 +16,8 @@ public class RoundManager : MonoBehaviour
 
     [SerializeField] private List<Ghost> activeGhosts = new List<Ghost>();
     [SerializeField] private List<Ghost> ghostTypes = new List<Ghost>();
+
+    [SerializeField] private VoidEvent startRoundEvent;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -53,12 +55,28 @@ public class RoundManager : MonoBehaviour
 
         Instantiate(ghost, (Vector3)spawnPoint,Quaternion.identity);
         ghost.gameObject.SetActive(true);
+        activeGhosts.Add(ghost);
     }
 
     private void StartRound()
     {
         currentRound++;
         StartCoroutine(SpawnWaves());
+    }
+
+    private void RemoveGhost(Ghost ghost)
+    {
+        activeGhosts.Remove(ghost);
+    }
+
+    private void OnEnable()
+    {
+        startRoundEvent.gameEvent += StartRound;
+    }
+
+    private void OnDisable()
+    {
+        startRoundEvent.gameEvent -= StartRound;
     }
 
 

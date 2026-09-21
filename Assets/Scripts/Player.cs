@@ -9,7 +9,9 @@ public class Player : MonoBehaviour
     private Tower selectedTower;
 
     private Vector2 cursorPosition;
-    
+
+    [SerializeField] float towerPickupDistance;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -41,27 +43,38 @@ public class Player : MonoBehaviour
         Vector3 onScreenPosition = cursorPosition;
 
 
-        RaycastHit2D hit = Physics2D.Raycast(onScreenPosition, Vector2.zero);
+        RaycastHit2D[] hits = Physics2D.RaycastAll(Camera.main.transform.position, onScreenPosition);
 
-        if (hit.collider == null) return;
-        if (hit.collider.TryGetComponent<Tower>(out Tower tower))
+        for (int i = 0; i < hits.Length; i++)
         {
-            if (selectedTower == null)
+            RaycastHit2D hit = hits[i];
+
+            if (hit.collider == null) return;
+            Debug.Log(hit.collider.name);
+            if (hit.collider.TryGetComponent<Tower>(out Tower tower) && selectedTower == null)
             {
                 selectedTower = tower;
                 selectedTower.Selected();
+                Debug.Log("breaking out");
+                break;
             }
-        }
 
-        if (hit.collider.CompareTag("Placeable"))
-        {
-            if (selectedTower != null)
+            if (hit.collider.CompareTag("Placeable") && selectedTower != null)
             {
+                Debug.Log("has selected tower now about to unselect ");
                 selectedTower.Unselected();
                 selectedTower = null;
             }
         }
     }
+
+    //private void Handle()
+
+    private void SetSelectedTower(Tower tower)
+    {
+        selectedTower = tower;
+    }
+
     private void OnEnable()
     {
         inputActions.MoveEvent += SetCursorScreenPosition;
@@ -74,5 +87,4 @@ public class Player : MonoBehaviour
         inputActions.ActionStartedEvent -= Action;
     }
 
-    
 }

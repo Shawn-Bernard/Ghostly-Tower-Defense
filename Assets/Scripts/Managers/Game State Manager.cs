@@ -7,8 +7,8 @@ public class GameStateManager : MonoBehaviour
     [SerializeField] private GameState gameplayState;
     [SerializeField] private GameState pauseState;
 
-    [SerializeField] private GameState currentState;
-    [SerializeField] private GameState lastState;
+    private GameState currentState;
+    private GameState lastState;
 
     [SerializeField] private VoidEvent onMainMenu;
     [SerializeField] private VoidEvent onGameplay;

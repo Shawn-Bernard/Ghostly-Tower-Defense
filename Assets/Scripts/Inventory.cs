@@ -9,7 +9,6 @@ public class Inventory : MonoBehaviour
     [SerializeField] private TowerEvent towerEvent;
     [SerializeField] private List<Tower> activeTowers;
 
-    private Tower selectedTower;
 
     private void Awake()
     {
@@ -58,9 +57,19 @@ public class Inventory : MonoBehaviour
     {
         if (loadout == null) return;
 
-        selectedTower = loadout[slotNumber];
+        Tower towerToPlace = loadout[slotNumber];
 
-        Debug.Log(selectedTower.name);
+        Debug.Log(towerToPlace.name);
+    }
+
+    public bool IsTowerTooClosr(Tower tower)
+    {
+        foreach (Tower towerIndex in activeTowers)
+        {
+            return Vector2.Distance(tower.transform.position, towerIndex.transform.position) < .5f;
+        }
+
+        return true;
     }
     private void AddTower(Tower tower)
     {

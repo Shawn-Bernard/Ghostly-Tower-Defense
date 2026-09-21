@@ -16,6 +16,8 @@ public class Tower : MonoBehaviour
     private List<GameObject> targets;
     private GameObject target;
 
+    private Vector2 oldPosition;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -72,19 +74,23 @@ public class Tower : MonoBehaviour
 
     public void Selected()
     {
-        canAttack = true;
+        oldPosition = transform.position;
+        canAttack = false;
         StopCoroutine(Attack());
         isSelected = true;
         target = null;
-        gameObject.SetActive(false);
     }
 
     public void Unselected()
     {
+        oldPosition = transform.position;
         isSelected = false;
-        gameObject.SetActive(true);
-        //Bug shoots at random direction when back in
         canAttack = true;
+    }
+
+    public void Cancelled()
+    {
+        transform.position = oldPosition;
     }
 
     private float GetAngle(Vector2 targetPosition,Vector2 fromPosition)
@@ -97,7 +103,7 @@ public class Tower : MonoBehaviour
 
     private void Shoot()
     {
-        if (target == null) return;
+        if (target == null || isSelected) return;
 
         if (!target.activeInHierarchy)
         {
