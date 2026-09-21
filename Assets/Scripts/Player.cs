@@ -6,13 +6,13 @@ public class Player : MonoBehaviour
     [SerializeField] private PlayerInputActions inputActions;
     [SerializeField] private Inventory inventory;
 
-    private Tower selectedTower;
+    private Weapon selectedWeapon;
 
     private Vector2 cursorPosition;
 
     [SerializeField] float towerPickupDistance;
 
-    [SerializeField] TowerEvent selectedTowerEvent;
+    [SerializeField] WeaponEvent selectedWeaponEvent;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -28,9 +28,9 @@ public class Player : MonoBehaviour
 
         transform.position = onScreenPosition;
 
-        if (selectedTower != null )
+        if (selectedWeapon != null )
         {
-            selectedTower.transform.position = onScreenPosition;
+            selectedWeapon.transform.position = onScreenPosition;
         }
     }
 
@@ -44,32 +44,40 @@ public class Player : MonoBehaviour
 
         Vector3 onScreenPosition = cursorPosition;
 
-        RaycastHit2D[] hits = Physics2D.RaycastAll(Camera.main.transform.position, onScreenPosition);
+        Collider2D[] hits = Physics2D.OverlapPointAll(onScreenPosition);
 
         foreach (var hit in hits)
         {
-            if (hit.collider == null) continue;
-
-            if (hit.collider.TryGetComponent<Tower>(out Tower tower) &&
-                selectedTower == null)
+            if (hit == null) continue;
+            if (hit.TryGetComponent<Weapon>(out Weapon weapon) &&
+                selectedWeapon == null)
             {
-                if (Vector2.Distance(onScreenPosition, tower.transform.position) <= towerPickupDistance)
+                if (Vector2.Distance(onScreenPosition, weapon.transform.position) <= towerPickupDistance)
                 {
-                    selectedTower = tower;
-                    selectedTower.Selected();
+                    selectedWeapon = weapon;
+                    selectedWeapon.Selected();
 
                     break;
                 }
             }
 
-            if (hit.collider.CompareTag("Placeable") && selectedTower != null)
+            if (selectedWeapon != null)
             {
-                // Comparing distance to see if u can place tower
-                if (!inventory.IsTowerTooClose(selectedTower))
+                if (selectedWeapon.TryGetComponent(out Tower tower)) // Only towers care about placecment
                 {
-                    Debug.Log("has selected tower now about to unselect ");
-                    selectedTower.Unselected();
-                    selectedTower = null;
+                    // Comparing distance to see if u can place tower
+                    if (hit.CompareTag("Placeable") &&
+                        !inventory.IsTowerTooClose(tower))
+                    {
+                        selectedWeapon.Unselected();
+                        selectedWeapon = null;
+                        break;
+                    }
+                }
+                else
+                {
+                    selectedWeapon.Unselected();
+                    selectedWeapon = null;
                     break;
                 }
             }
@@ -78,13 +86,13 @@ public class Player : MonoBehaviour
 
     //private void Handle()
 
-    private void SetSelectedTower(Tower tower)
+    private void SetSelectedTower(Weapon newSelectedWeapon)
     {
-        if (selectedTower != null)
+        if (selectedWeapon != null)
         {
-            selectedTower.Cancelled();
+            selectedWeapon.Cancelled();
         }
-        selectedTower = tower;
+        selectedWeapon = newSelectedWeapon;
     }
 
     private void OnEnable()
@@ -92,7 +100,7 @@ public class Player : MonoBehaviour
         inputActions.MoveEvent += SetCursorScreenPosition;
         inputActions.ActionStartedEvent += Action;
 
-        selectedTowerEvent.registerEvent += SetSelectedTower;
+        selectedWeaponEvent.gameEvent += SetSelectedTower;
     }
 
     private void OnDisable()
@@ -100,7 +108,6 @@ public class Player : MonoBehaviour
         inputActions.MoveEvent -= SetCursorScreenPosition;
         inputActions.ActionStartedEvent -= Action;
 
-        selectedTowerEvent.registerEvent -= SetSelectedTower;
+        selectedWeaponEvent.gameEvent -= SetSelectedTower;
     }
-
 }

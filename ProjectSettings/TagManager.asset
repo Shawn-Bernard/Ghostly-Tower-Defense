@@ -7,11 +7,12 @@ TagManager:
   - Waypoint
   - Enemy
   - Placeable
+  - Weapon
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - Selectable
+  - 
   - Water
   - UI
   - 

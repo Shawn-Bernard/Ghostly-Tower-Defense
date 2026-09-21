@@ -4,10 +4,10 @@ using UnityEngine;
 public class Inventory : MonoBehaviour
 {
     [SerializeField] private PlayerInputActions inputActions;
-    [SerializeField] private Tower[] loadout;
+    [SerializeField] private Weapon[] loadout;
     [SerializeField] private int maxTowerCount;
     [SerializeField] private TowerEvent towerEvent;
-    [SerializeField] private TowerEvent selectedTowerEvent;
+    [SerializeField] private WeaponEvent selectedWeaponEvent;
     [SerializeField] private List<Tower> activeTowers;
 
     [SerializeField] private float towerPlacementDistance;
@@ -16,54 +16,41 @@ public class Inventory : MonoBehaviour
     {
         activeTowers = new List<Tower>();
     }
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 
     private void SelectSlot1()
     {
-        SelectTower(0);
+        SelectWeapon(0);
     }
 
     private void SelectSlot2()
     {
-        SelectTower(1);
+        SelectWeapon(1);
     }
 
     private void SelectSlot3()
     {
-        SelectTower(2);
+        SelectWeapon(2);
     }
     private void SelectSlot4()
     {
-        SelectTower(3);
+        SelectWeapon(3);
     }
     private void SelectSlot5()
     {
-        SelectTower(4);
+        SelectWeapon(4);
     }
 
     /// <summary>
-    /// Select a tower from loadout to place
+    /// Select a weapon from loadout to place
     /// </summary>
     /// <param name="slotNumber"></param>
-    private void SelectTower(int slotNumber)
+    private void SelectWeapon(int slotNumber)
     {
         if (loadout == null) return;
 
-        Tower towerToPlace = Instantiate(loadout[slotNumber]);
+        Weapon selectableToPlace = Instantiate(loadout[slotNumber]);
 
-        
-
-        selectedTowerEvent.registerEvent(towerToPlace);
+        selectedWeaponEvent.RaiseEvent(selectableToPlace);
     }
 
     public bool IsTowerTooClose(Tower tower)

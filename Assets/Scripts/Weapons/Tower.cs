@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Tower : MonoBehaviour, ISelectable
+public class Tower : Weapon
 {
     [SerializeField] private float attackCooldown;
 
@@ -71,7 +71,7 @@ public class Tower : MonoBehaviour, ISelectable
         }
     }
 
-    public void Selected()
+    public override void Selected()
     {
         oldPosition = transform.position;
         canAttack = false;
@@ -80,14 +80,14 @@ public class Tower : MonoBehaviour, ISelectable
         target = null;
     }
 
-    public void Unselected()
+    public override void Unselected()
     {
         oldPosition = transform.position;
         isSelected = false;
         canAttack = true;
     }
 
-    public void Cancelled()
+    public override void Cancelled()
     {
         transform.position = oldPosition;
     }
