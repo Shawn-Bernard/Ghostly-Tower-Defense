@@ -7,8 +7,10 @@ public class Inventory : MonoBehaviour
     [SerializeField] private Tower[] loadout;
     [SerializeField] private int maxTowerCount;
     [SerializeField] private TowerEvent towerEvent;
+    [SerializeField] private TowerEvent selectedTowerEvent;
     [SerializeField] private List<Tower> activeTowers;
 
+    [SerializeField] private float towerPlacementDistance;
 
     private void Awake()
     {
@@ -57,23 +59,36 @@ public class Inventory : MonoBehaviour
     {
         if (loadout == null) return;
 
-        Tower towerToPlace = loadout[slotNumber];
+        Tower towerToPlace = Instantiate(loadout[slotNumber]);
 
-        Debug.Log(towerToPlace.name);
+        
+
+        selectedTowerEvent.registerEvent(towerToPlace);
     }
 
-    public bool IsTowerTooClosr(Tower tower)
+    public bool IsTowerTooClose(Tower tower)
     {
-        foreach (Tower towerIndex in activeTowers)
+        if (tower == null)
+            return false;
+
+        foreach (Tower activeTower in activeTowers)
         {
-            return Vector2.Distance(tower.transform.position, towerIndex.transform.position) < .5f;
+            if (activeTower == null || activeTower == tower)
+                continue;
+
+            if (Vector2.Distance(
+                tower.transform.position,
+                activeTower.transform.position) <= towerPlacementDistance)
+            {
+                return true;
+            }
         }
 
-        return true;
+        return false;
     }
     private void AddTower(Tower tower)
     {
-        if (activeTowers.Count > maxTowerCount)
+        if (activeTowers.Count >= maxTowerCount)
         {
             tower.gameObject.SetActive(false);
         }

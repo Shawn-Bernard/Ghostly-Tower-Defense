@@ -30,7 +30,7 @@ public class Tower : MonoBehaviour
     {
         if (target != null)
         {
-            if (!target.activeInHierarchy) target = null;
+            if (!target.activeInHierarchy || isSelected) target = null;
 
 
             float angle = GetAngle(target.transform.position, transform.position);

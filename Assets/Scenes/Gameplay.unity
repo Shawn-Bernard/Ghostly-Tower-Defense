@@ -1460,7 +1460,7 @@ GameObject:
   - component: {fileID: 1147360541}
   - component: {fileID: 1147360540}
   m_Layer: 3
-  m_Name: Tower
+  m_Name: Tower1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1774,8 +1774,16 @@ PrefabInstance:
       value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 8988084523544548269, guid: a9b4c3e424661c147969fb669ee90099, type: 3}
+      propertyPath: towerEvent
+      value: 
+      objectReference: {fileID: 11400000, guid: 6d24384728f33754994c58410a0c503b, type: 2}
+    - target: {fileID: 8988084523544548269, guid: a9b4c3e424661c147969fb669ee90099, type: 3}
       propertyPath: raycastDistance
       value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 8988084523544548269, guid: a9b4c3e424661c147969fb669ee90099, type: 3}
+      propertyPath: towerPickupDistance
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

@@ -4,7 +4,7 @@ using UnityEngine.InputSystem;
 public class Player : MonoBehaviour
 {
     [SerializeField] private PlayerInputActions inputActions;
-    [SerializeField] private float sensitivity;
+    [SerializeField] private Inventory inventory;
 
     private Tower selectedTower;
 
@@ -12,10 +12,11 @@ public class Player : MonoBehaviour
 
     [SerializeField] float towerPickupDistance;
 
+    [SerializeField] TowerEvent selectedTowerEvent;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
+        inventory ??= GetComponent<Inventory>();
     }
 
     // Update is called once per frame
@@ -37,33 +38,40 @@ public class Player : MonoBehaviour
     {
         cursorPosition = Camera.main.ScreenToWorldPoint(mousePosition);
     }
+
     private void Action()
     {
 
         Vector3 onScreenPosition = cursorPosition;
 
-
         RaycastHit2D[] hits = Physics2D.RaycastAll(Camera.main.transform.position, onScreenPosition);
 
-        for (int i = 0; i < hits.Length; i++)
+        foreach (var hit in hits)
         {
-            RaycastHit2D hit = hits[i];
+            if (hit.collider == null) continue;
 
-            if (hit.collider == null) return;
-            Debug.Log(hit.collider.name);
-            if (hit.collider.TryGetComponent<Tower>(out Tower tower) && selectedTower == null)
+            if (hit.collider.TryGetComponent<Tower>(out Tower tower) &&
+                selectedTower == null)
             {
-                selectedTower = tower;
-                selectedTower.Selected();
-                Debug.Log("breaking out");
-                break;
+                if (Vector2.Distance(onScreenPosition, tower.transform.position) <= towerPickupDistance)
+                {
+                    selectedTower = tower;
+                    selectedTower.Selected();
+
+                    break;
+                }
             }
 
             if (hit.collider.CompareTag("Placeable") && selectedTower != null)
             {
-                Debug.Log("has selected tower now about to unselect ");
-                selectedTower.Unselected();
-                selectedTower = null;
+                // Comparing distance to see if u can place tower
+                if (!inventory.IsTowerTooClose(selectedTower))
+                {
+                    Debug.Log("has selected tower now about to unselect ");
+                    selectedTower.Unselected();
+                    selectedTower = null;
+                    break;
+                }
             }
         }
     }
@@ -72,6 +80,10 @@ public class Player : MonoBehaviour
 
     private void SetSelectedTower(Tower tower)
     {
+        if (selectedTower != null)
+        {
+            selectedTower.Cancelled();
+        }
         selectedTower = tower;
     }
 
@@ -79,12 +91,16 @@ public class Player : MonoBehaviour
     {
         inputActions.MoveEvent += SetCursorScreenPosition;
         inputActions.ActionStartedEvent += Action;
+
+        selectedTowerEvent.registerEvent += SetSelectedTower;
     }
 
     private void OnDisable()
     {
         inputActions.MoveEvent -= SetCursorScreenPosition;
         inputActions.ActionStartedEvent -= Action;
+
+        selectedTowerEvent.registerEvent -= SetSelectedTower;
     }
 
 }

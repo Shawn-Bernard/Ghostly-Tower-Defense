@@ -47,7 +47,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Player
   inputActions: {fileID: 11400000, guid: 98bd9d34f2639c24ebfdc9f425e681e6, type: 2}
-  sensitivity: 3
+  inventory: {fileID: 3918254867846777152}
+  selectedTower: {fileID: 0}
+  towerPickupDistance: 0
+  selectedTowerEvent: {fileID: 11400000, guid: 6d24384728f33754994c58410a0c503b, type: 2}
 --- !u!114 &3918254867846777152
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -69,7 +72,9 @@ MonoBehaviour:
   - {fileID: 3624184852576844074, guid: 9923cbdbec047734ebfdb3fee6be2a78, type: 3}
   maxTowerCount: 5
   towerEvent: {fileID: 11400000, guid: 446ceae12205693429ce17b0dbe725f6, type: 2}
+  selectedTowerEvent: {fileID: 11400000, guid: 6d24384728f33754994c58410a0c503b, type: 2}
   activeTowers: []
+  towerPlacementDistance: 0
 --- !u!1 &9072998676910449234
 GameObject:
   m_ObjectHideFlags: 0
