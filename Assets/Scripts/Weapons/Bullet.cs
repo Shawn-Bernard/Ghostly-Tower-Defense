@@ -5,7 +5,7 @@ using UnityEngine;
 public class Bullet : MonoBehaviour
 {
     [SerializeField] protected float moveSpeed;
-    [SerializeField] protected int damage;
+    [SerializeField] protected int damageAmount;
 
     protected IDamageable damageable;
 
@@ -40,7 +40,7 @@ public class Bullet : MonoBehaviour
     {
         if (damageable == null) return;
 
-        damageable.TakeDamage(damage);
+        damageable.TakeDamage(damageAmount);
 
         gameObject.SetActive(false);
         transform.SetParent(originalParent);

@@ -2,19 +2,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Tower : MonoBehaviour
+public class Tower : MonoBehaviour, ISelectable
 {
-    [SerializeField] private float attackRate;
+    [SerializeField] private float attackCooldown;
 
 
-    [SerializeField] private GameObject bullet;
-    [SerializeField] private bool canAttack;
-    [SerializeField] private bool isSelected;
+    [SerializeField] protected bool canAttack;
+    [SerializeField] protected bool isSelected;
 
     [SerializeField] private TowerEvent towerEvent;
 
-    private List<GameObject> targets;
-    private GameObject target;
+    protected List<GameObject> targets;
+    [SerializeField] protected GameObject target;
 
     private Vector2 oldPosition;
 
@@ -93,7 +92,7 @@ public class Tower : MonoBehaviour
         transform.position = oldPosition;
     }
 
-    private float GetAngle(Vector2 targetPosition,Vector2 fromPosition)
+    protected float GetAngle(Vector2 targetPosition,Vector2 fromPosition)
     {
         float angleOffset = 90f;
         Vector2 direction = targetPosition - fromPosition;
@@ -101,40 +100,20 @@ public class Tower : MonoBehaviour
         return angle;
     }
 
-    private void Shoot()
+    protected virtual void PerformAttack()
     {
-        if (target == null || isSelected) return;
-
-        if (!target.activeInHierarchy)
-        {
-            target = null;
-        }
-        else
-        {
-            bullet.transform.position = transform.position;
-            bullet.transform.rotation = transform.rotation;
-        
-            float angle = GetAngle(target.transform.position, bullet.transform.position);
-
-            bullet.transform.rotation = Quaternion.Euler(0, 0, angle);
-
-            bullet.SetActive(true);
-
-        }
     }
     /// <summary>
     /// Starts shoot and waits for cooldown = attack rate and checks for new targets 
     /// </summary>
     /// <returns></returns>
 
-    IEnumerator Attack()
+    protected virtual IEnumerator Attack()
     {
         canAttack = false;
 
         FindClosestTarget();
-        Shoot();
-
-        float attackCooldown = 1 / attackRate;
+        PerformAttack();
 
         yield return new WaitForSeconds(attackCooldown);
 
@@ -188,19 +167,26 @@ public class Tower : MonoBehaviour
         target = null;
         StopCoroutine(Attack());
     }
-
+    /*
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.green;
 
-        Gizmos.DrawLine(transform.position,transform.position + transform.right * 2f);
+        Gizmos.DrawWireSphere(transform.position, meleeRange);
 
-        if (target != null)
-        {
-            Gizmos.DrawLine(transform.position, target.transform.position);
-        }
+        Vector3 left = Quaternion.Euler(0, 0, meleeAngle / 2f) * transform.up;
+        Vector3 right = Quaternion.Euler(0, 0, -meleeAngle / 2f) * transform.up;
+
+        Gizmos.DrawLine(
+            transform.position,
+            transform.position + left * meleeRange
+        );
+
+        Gizmos.DrawLine(
+            transform.position,
+            transform.position + right * meleeRange
+        );
     }
-
-
+    */
 
 }

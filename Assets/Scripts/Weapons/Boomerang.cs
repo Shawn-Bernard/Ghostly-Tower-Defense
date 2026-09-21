@@ -52,7 +52,7 @@ public class Boomerang : Bullet
     {
         if (damageable == null) return;
 
-        damageable.TakeDamage(damage);
+        damageable.TakeDamage(damageAmount);
     }
     private void OnDrawGizmos()
     {

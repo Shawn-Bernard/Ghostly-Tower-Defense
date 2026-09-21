@@ -10,5 +10,5 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bb60c08c14a7415459451de7261f3900, type: 3}
-  m_Name: Tower Event
+  m_Name: Active Tower Event
   m_EditorClassIdentifier: Assembly-CSharp::TowerEvent
