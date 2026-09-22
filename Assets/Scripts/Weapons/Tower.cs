@@ -167,26 +167,5 @@ public class Tower : Weapon
         target = null;
         StopCoroutine(Attack());
     }
-    /*
-    private void OnDrawGizmos()
-    {
-        Gizmos.color = Color.green;
-
-        Gizmos.DrawWireSphere(transform.position, meleeRange);
-
-        Vector3 left = Quaternion.Euler(0, 0, meleeAngle / 2f) * transform.up;
-        Vector3 right = Quaternion.Euler(0, 0, -meleeAngle / 2f) * transform.up;
-
-        Gizmos.DrawLine(
-            transform.position,
-            transform.position + left * meleeRange
-        );
-
-        Gizmos.DrawLine(
-            transform.position,
-            transform.position + right * meleeRange
-        );
-    }
-    */
 
 }
