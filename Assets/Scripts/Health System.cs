@@ -1,11 +1,13 @@
 using UnityEngine;
-using UnityEngine.Rendering;
+using UnityEngine.Events;
 
 public class HealthSystem : MonoBehaviour, IDamageable
 {
     [SerializeField] private int maxHealth;
 
-    private int currentHealth;
+    [SerializeField] private int currentHealth;
+
+    [SerializeField] private UnityEvent onDeath;
 
     private void Awake()
     {
@@ -25,7 +27,7 @@ public class HealthSystem : MonoBehaviour, IDamageable
 
     public void Death()
     {
-        gameObject.SetActive(false);
+        onDeath?.Invoke();
     }
 
     private void ResetLife()

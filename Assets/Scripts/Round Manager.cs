@@ -10,6 +10,7 @@ public class RoundManager : MonoBehaviour
     [SerializeField] private float waveInterval; // Wait time per wave in a round
 
     [SerializeField] private int currentRound;
+    private bool hasRoundStarted;
 
     [SerializeField] private WaypointEvent waypointEvent;
     [SerializeField] private Vector2 spawnPoint;
@@ -18,6 +19,7 @@ public class RoundManager : MonoBehaviour
     [SerializeField] private List<Ghost> ghostTypes = new List<Ghost>();
 
     [SerializeField] private VoidEvent startRoundEvent;
+    [SerializeField] private GhostEvent ghostEvent;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -27,13 +29,11 @@ public class RoundManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape)) 
-        {
-            StartRound();
-        }
+
     }
     private IEnumerator SpawnWaves()
     {
+        hasRoundStarted = true;
         currentRound++;
 
         for (int currentWave = 0; currentWave < totalWave; currentWave++)
@@ -46,7 +46,9 @@ public class RoundManager : MonoBehaviour
             }
             yield return new WaitForSeconds(waveInterval);
         }
-        
+
+        hasRoundStarted = false;
+
     }
 
     private void SpawnGhost()
@@ -55,28 +57,55 @@ public class RoundManager : MonoBehaviour
 
         Instantiate(ghost, (Vector3)spawnPoint,Quaternion.identity);
         ghost.gameObject.SetActive(true);
-        activeGhosts.Add(ghost);
     }
 
     private void StartRound()
     {
-        currentRound++;
-        StartCoroutine(SpawnWaves());
+        if (CanStartRound())
+        {
+            currentRound++;
+            StartCoroutine(SpawnWaves());
+        }
+    }
+
+    private bool CanStartRound()
+    {
+        if (activeGhosts.Count <= 0 && !hasRoundStarted)
+        {
+            return true;
+        }
+
+        return false;
     }
 
     private void RemoveGhost(Ghost ghost)
     {
-        activeGhosts.Remove(ghost);
+        if (activeGhosts != null)
+        {
+            activeGhosts.Remove(ghost);
+        }
+    }
+
+    private void AddGhost(Ghost ghost)
+    {
+        if (activeGhosts != null)
+        {
+            activeGhosts.Add(ghost);
+        }
     }
 
     private void OnEnable()
     {
         startRoundEvent.gameEvent += StartRound;
+        ghostEvent.unregisterEvent += RemoveGhost;
+        ghostEvent.registerEvent += AddGhost;
     }
 
     private void OnDisable()
     {
         startRoundEvent.gameEvent -= StartRound;
+        ghostEvent.unregisterEvent -= RemoveGhost;
+        ghostEvent.registerEvent -= AddGhost;
     }
 
 

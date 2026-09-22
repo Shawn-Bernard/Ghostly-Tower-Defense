@@ -6,6 +6,7 @@ public class GameStateManager : MonoBehaviour
     [SerializeField] private GameState mainMenu;
     [SerializeField] private GameState gameplayState;
     [SerializeField] private GameState pauseState;
+    [SerializeField] private GameState gameOverState;
 
     private GameState currentState;
     private GameState lastState;
@@ -15,6 +16,8 @@ public class GameStateManager : MonoBehaviour
 
     [SerializeField] private VoidEvent onPauseStart;
     [SerializeField] private VoidEvent onPauseEnd;
+
+    [SerializeField] private VoidEvent OnPlayerDeath;
 
     void Update()
     {
@@ -48,10 +51,14 @@ public class GameStateManager : MonoBehaviour
         ChangeGameState(pauseState);
     }
 
+    private void SwitchToGameOver()
+    {
+        ChangeGameState(gameOverState);
+    }
+
     public void SwitchToLastState()
     {
         ChangeGameState(lastState);
-
     }
 
     private void OnEnable()
@@ -61,6 +68,8 @@ public class GameStateManager : MonoBehaviour
 
         onPauseStart.gameEvent += SwitchToPause;
         onPauseEnd.gameEvent += SwitchToLastState;
+
+        OnPlayerDeath.gameEvent += SwitchToGameOver;
     }
 
     private void OnDisable()
@@ -70,6 +79,9 @@ public class GameStateManager : MonoBehaviour
 
         onPauseStart.gameEvent -= SwitchToPause;
         onPauseEnd.gameEvent -= SwitchToLastState;
+
+
+        OnPlayerDeath.gameEvent -= SwitchToGameOver;
     }
 
 }
