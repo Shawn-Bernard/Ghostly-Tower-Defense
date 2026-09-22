@@ -7,6 +7,7 @@ public class Player : MonoBehaviour
     [SerializeField] private Inventory inventory;
 
     private Weapon selectedWeapon;
+    private Weapon weaponToPlace;
 
     private Vector2 cursorPosition;
 
@@ -30,9 +31,9 @@ public class Player : MonoBehaviour
 
     private void HoldSelectedWeapon()
     {
-        if (selectedWeapon != null)
+        if (weaponToPlace != null)
         {
-            selectedWeapon.transform.position = cursorPosition;
+            weaponToPlace.transform.position = cursorPosition;
         }
     }
 
@@ -48,41 +49,68 @@ public class Player : MonoBehaviour
 
         Collider2D[] hits = Physics2D.OverlapPointAll(onScreenPosition);
 
-        foreach (var hit in hits)
+        // Deals with inventory weapon to be placed
+        if (weaponToPlace != null) 
         {
-            if (hit == null) continue;
-            if (hit.TryGetComponent<Weapon>(out Weapon weapon) &&
-                selectedWeapon == null)
+            // Only towers care about placecment
+            if (weaponToPlace.TryGetComponent(out Tower tower))
             {
-                if (Vector2.Distance(onScreenPosition, weapon.transform.position) <= towerPickupDistance)
+                foreach (var hit in hits)
                 {
-                    selectedWeapon = weapon;
-                    selectedWeapon.Selected();
+                    if (hit == null) continue;
 
-                    break;
-                }
-            }
-
-            if (selectedWeapon != null)
-            {
-                if (selectedWeapon.TryGetComponent(out Tower tower)) // Only towers care about placecment
-                {
+                    if (!hit.CompareTag("Placeable")) continue;
                     // Comparing distance to see if u can place tower
-                    if (hit.CompareTag("Placeable") &&
-                        !inventory.IsTowerTooClose(tower))
+                    if (!inventory.IsTowerTooClose(tower))
                     {
-                        selectedWeapon.Unselected();
-                        selectedWeapon = null;
+                        weaponToPlace.Unselected();
+                        weaponToPlace = null;
                         break;
                     }
                 }
-                else
+            }
+            else // If its not a tower then deselect
+            {
+                weaponToPlace.Unselected();
+                weaponToPlace = null;
+            }
+        }
+
+
+        // Deals with selecting a weapon
+        foreach (var hit in hits)
+        {
+            if (hit == null) continue;
+
+            if (hit.TryGetComponent<Weapon>(out Weapon weapon))
+            {
+                if (Vector2.Distance(onScreenPosition, weapon.transform.position) <= towerPickupDistance)
                 {
-                    selectedWeapon.Unselected();
-                    selectedWeapon = null;
+                    if (selectedWeapon != null)
+                    {
+                        selectedWeapon.Unselected();
+                    }
+                    selectedWeapon = weapon;
+                    selectedWeapon.Selected();
                     break;
                 }
             }
+        }
+    }
+
+
+    private void SetSelectedTower(Weapon newSelectedWeapon)
+    {
+        if (weaponToPlace != null)
+        {
+            Destroy(weaponToPlace.gameObject);
+        }
+
+        weaponToPlace = newSelectedWeapon;
+
+        if (weaponToPlace != null)
+        {
+            weaponToPlace.Selected();
         }
     }
 
@@ -98,16 +126,6 @@ public class Player : MonoBehaviour
         inputActions.ActionStartedEvent += Action;
     }
 
-    private void SetSelectedTower(Weapon newSelectedWeapon)
-    {
-        if (selectedWeapon != null)
-        {
-            selectedWeapon.Cancelled();
-        }
-        selectedWeapon = newSelectedWeapon;
-        selectedWeapon.Selected();
-    }
-
     private void OnEnable()
     {
         gameplayState.onEnterState += EnableInputs;
@@ -118,8 +136,8 @@ public class Player : MonoBehaviour
 
     private void OnDisable()
     {
-        gameplayState.onEnterState += EnableInputs;
-        gameplayState.onExitState += DisableInputs;
+        gameplayState.onEnterState -= EnableInputs;
+        gameplayState.onExitState -= DisableInputs;
 
         selectedWeaponEvent.gameEvent -= SetSelectedTower;
     }
