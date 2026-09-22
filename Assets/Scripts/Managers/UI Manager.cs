@@ -2,16 +2,21 @@ using UnityEngine;
 
 public class UIManager : MonoBehaviour
 {
+    [Header("Menus")]
     [SerializeField] private GameObject mainMenu;
     [SerializeField] private GameObject gameplayMenu;
     [SerializeField] private GameObject pauseMenu;
     [SerializeField] private GameObject gameOverMenu;
+    [SerializeField] private GameObject winnerMenu;
 
+    [Header("Game states")]
     [SerializeField] GameState gameplayState;
     [SerializeField] GameState mainMenuState;
     [SerializeField] GameState pauseState;
     [SerializeField] GameState gameOverState;
+    [SerializeField] GameState winnerState;
 
+    [Header("Events")]
     [SerializeField] VoidEvent OnGameplay;
     [SerializeField] VoidEvent OnMainMenu;
 
@@ -38,6 +43,11 @@ public class UIManager : MonoBehaviour
         DisableAllMenus();
         gameOverMenu.SetActive(true);
     }
+    public void EnableWinnerMenu()
+    {
+        DisableAllMenus();
+        winnerMenu.SetActive(true);
+    }
 
     public void DisableAllMenus()
     {
@@ -45,6 +55,7 @@ public class UIManager : MonoBehaviour
         gameplayMenu.SetActive(false);
         pauseMenu.SetActive(false);
         gameOverMenu.SetActive(false);
+        winnerMenu.SetActive(false);
     }
 
     private void OnEnable()
@@ -53,6 +64,7 @@ public class UIManager : MonoBehaviour
         gameplayState.onEnterState += EnableGameplay;
         pauseState.onEnterState += EnablePauseMenu;
         gameOverState.onEnterState += EnableGameOverMenu;
+        winnerState.onEnterState += EnableWinnerMenu;
 
         OnGameplay.gameEvent += EnableGameplay;
         OnMainMenu.gameEvent += EnableMainMenu;
@@ -64,6 +76,7 @@ public class UIManager : MonoBehaviour
         gameplayState.onEnterState -= EnableGameplay;
         pauseState.onEnterState -= EnablePauseMenu;
         gameOverState.onEnterState -= EnableGameOverMenu;
+        winnerState.onEnterState -= EnableWinnerMenu;
 
         OnGameplay.gameEvent -= EnableGameplay;
         OnMainMenu.gameEvent -= EnableMainMenu;

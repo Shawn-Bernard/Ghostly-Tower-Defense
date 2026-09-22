@@ -43,7 +43,6 @@ public class RoundManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
     }
 
 
@@ -64,7 +63,6 @@ public class RoundManager : MonoBehaviour
             }
             yield return new WaitForSeconds(waveInterval);
         }
-        CheckFinishedLevel();
         hasRoundStarted = false;
         
     }
@@ -101,7 +99,6 @@ public class RoundManager : MonoBehaviour
     {
         if (currentRound >= totalRounds && activeGhosts.Count <= 0)
         {
-            Debug.Log("Done win");
             onLevelFinished.RaiseEvent();
         }
     }
@@ -113,6 +110,7 @@ public class RoundManager : MonoBehaviour
             activeGhosts.Remove(ghost);
             deadEnemies++;
         }
+        CheckFinishedLevel();
     }
 
     private void AddGhost(Ghost ghost)

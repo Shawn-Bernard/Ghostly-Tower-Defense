@@ -7,9 +7,10 @@ public class GameStateManager : MonoBehaviour
     [SerializeField] private GameState gameplayState;
     [SerializeField] private GameState pauseState;
     [SerializeField] private GameState gameOverState;
+    [SerializeField] private GameState winnerState;
 
-    [SerializeField] private GameState currentState;
-    [SerializeField] private GameState lastState;
+    private GameState currentState;
+    private GameState lastState;
 
     [SerializeField] private VoidEvent onMainMenu;
     [SerializeField] private VoidEvent onGameplay;
@@ -17,7 +18,8 @@ public class GameStateManager : MonoBehaviour
     [SerializeField] private VoidEvent onPauseStart;
     [SerializeField] private VoidEvent onPauseEnd;
 
-    [SerializeField] private VoidEvent OnPlayerDeath;
+    [SerializeField] private VoidEvent onPlayerDeath;
+    [SerializeField] private VoidEvent onLevelFinished;
 
     void Update()
     {
@@ -55,6 +57,10 @@ public class GameStateManager : MonoBehaviour
     {
         ChangeGameState(gameOverState);
     }
+    private void SwitchToWinner()
+    {
+        ChangeGameState(winnerState);
+    }
 
     public void SwitchToLastState()
     {
@@ -69,7 +75,8 @@ public class GameStateManager : MonoBehaviour
         onPauseStart.gameEvent += SwitchToPause;
         onPauseEnd.gameEvent += SwitchToLastState;
 
-        OnPlayerDeath.gameEvent += SwitchToGameOver;
+        onPlayerDeath.gameEvent += SwitchToGameOver;
+        onLevelFinished.gameEvent += SwitchToWinner;
     }
 
     private void OnDisable()
@@ -81,7 +88,8 @@ public class GameStateManager : MonoBehaviour
         onPauseEnd.gameEvent -= SwitchToLastState;
 
 
-        OnPlayerDeath.gameEvent -= SwitchToGameOver;
+        onPlayerDeath.gameEvent -= SwitchToGameOver;
+        onLevelFinished.gameEvent += SwitchToWinner;
     }
 
 }
