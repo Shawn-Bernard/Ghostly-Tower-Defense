@@ -17,25 +17,25 @@ public class Inventory : MonoBehaviour
         activeTowers = new List<Tower>();
     }
 
-    private void SelectSlot1()
+    public void SelectSlot1()
     {
         SelectWeapon(0);
     }
 
-    private void SelectSlot2()
+    public void SelectSlot2()
     {
         SelectWeapon(1);
     }
 
-    private void SelectSlot3()
+    public void SelectSlot3()
     {
         SelectWeapon(2);
     }
-    private void SelectSlot4()
+    public void SelectSlot4()
     {
         SelectWeapon(3);
     }
-    private void SelectSlot5()
+    public void SelectSlot5()
     {
         SelectWeapon(4);
     }
