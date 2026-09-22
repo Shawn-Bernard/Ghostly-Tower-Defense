@@ -21,6 +21,7 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] private GameState gameplayState;
     [SerializeField] private GameState pauseState;
+    [SerializeField] private GameState gameOverState;
 
     [SerializeField] private VoidEvent onPause;
     [SerializeField] private VoidEvent onPauseEnd;
@@ -65,6 +66,12 @@ public class GameManager : MonoBehaviour
         {
             pauseState.onEnterState += StopGameTime;
         }
+
+        if (gameOverState != null)
+        {
+            gameOverState.onEnterState += StopGameTime;
+            gameOverState.onExitState += ResumeGameTime;
+        }
     }
 
     private void OnDisable()
@@ -76,6 +83,11 @@ public class GameManager : MonoBehaviour
         if (pauseState != null)
         {
             pauseState.onEnterState -= StopGameTime;
+        }
+        if (gameOverState != null)
+        {
+            gameOverState.onEnterState -= StopGameTime;
+            gameOverState.onExitState -= ResumeGameTime;
         }
     }
 }

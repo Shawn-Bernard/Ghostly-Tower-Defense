@@ -3,11 +3,12 @@ using UnityEngine.Events;
 
 public class HealthSystem : MonoBehaviour, IDamageable
 {
-    [SerializeField] private int maxHealth;
+    [SerializeField] protected int maxHealth;
 
-    [SerializeField] private int currentHealth;
+    [SerializeField] protected int currentHealth;
 
-    [SerializeField] private UnityEvent onDeath;
+    [SerializeField] protected UnityEvent onDeath;
+    [SerializeField] protected UnityEvent onDamageTaken;
 
     private void Awake()
     {
@@ -17,21 +18,30 @@ public class HealthSystem : MonoBehaviour, IDamageable
     public void TakeDamage(int damage)
     {
         currentHealth = Mathf.Max(currentHealth - damage,0);
-        //Debug.Log($"Current Health : {currentHealth}");
 
-        if (currentHealth <= 0 )
-        {
-            Death();
-        }
+        onDamageTaken?.Invoke();
     }
 
-    public void Death()
+    protected void CheckDeath()
     {
-        onDeath?.Invoke();
+        if (currentHealth <= 0)
+        {
+            onDeath?.Invoke();
+        }
     }
 
     private void ResetLife()
     {
         currentHealth = maxHealth;
+    }
+
+    private void OnEnable()
+    {
+        onDamageTaken.AddListener(CheckDeath);
+    }
+
+    private void OnDisable()
+    {
+        onDamageTaken.RemoveListener(CheckDeath);
     }
 }
