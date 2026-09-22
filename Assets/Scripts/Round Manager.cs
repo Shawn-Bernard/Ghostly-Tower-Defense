@@ -4,12 +4,17 @@ using UnityEngine;
 
 public class RoundManager : MonoBehaviour
 {
+    [Header("Round/Wave Settings")]
+    [Range(1,10)]
+    [SerializeField] private int totalRounds;
     [SerializeField] private float spawnInterval; // Wait time for each enemy
     [SerializeField] private int enemiesPerWave; // How many enemies spawn per wave in a round
-    [SerializeField] private int totalWave; // How many waves spawn per round
+    [SerializeField] private int totalWaves; // How many waves spawn per round
     [SerializeField] private float waveInterval; // Wait time per wave in a round
-
-    [SerializeField] private int currentRound;
+    private int totalEnemies;
+    private int deadEnemies;
+    private int currentWave;
+    private int currentRound;
     private bool hasRoundStarted;
 
     [SerializeField] private WaypointEvent waypointEvent;
@@ -19,11 +24,20 @@ public class RoundManager : MonoBehaviour
     [SerializeField] private List<Ghost> ghostTypes = new List<Ghost>();
 
     [SerializeField] private VoidEvent startRoundEvent;
+    [SerializeField] private VoidEvent onLevelFinished;
     [SerializeField] private GhostEvent ghostEvent;
+
+    [SerializeField] private StringEvent waveStringEvent;
+    [SerializeField] private StringEvent roundStringEvent;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         spawnPoint = waypointEvent.GetWaypoint(0);
+        totalEnemies = enemiesPerWave * totalWaves;
+        waveStringEvent.RaiseEvent(currentWave.ToString(), totalWaves.ToString());
+
+        roundStringEvent.RaiseEvent(currentRound.ToString(), totalRounds.ToString());
     }
 
     // Update is called once per frame
@@ -31,13 +45,17 @@ public class RoundManager : MonoBehaviour
     {
 
     }
+
+
     private IEnumerator SpawnWaves()
     {
         hasRoundStarted = true;
-        currentRound++;
 
-        for (int currentWave = 0; currentWave < totalWave; currentWave++)
+        
+        for (int currentWaveLoop = 0; currentWaveLoop < totalWaves; currentWaveLoop++)
         {
+            currentWave++;
+            waveStringEvent.RaiseEvent(currentWave.ToString(), totalWaves.ToString());
             for (int enemyCount = 0; enemyCount < enemiesPerWave; enemyCount++)
             {
                 SpawnGhost();
@@ -46,9 +64,9 @@ public class RoundManager : MonoBehaviour
             }
             yield return new WaitForSeconds(waveInterval);
         }
-
+        CheckFinishedLevel();
         hasRoundStarted = false;
-
+        
     }
 
     private void SpawnGhost()
@@ -65,6 +83,7 @@ public class RoundManager : MonoBehaviour
         {
             currentRound++;
             StartCoroutine(SpawnWaves());
+            roundStringEvent.RaiseEvent(currentRound.ToString(), totalRounds.ToString());
         }
     }
 
@@ -78,11 +97,21 @@ public class RoundManager : MonoBehaviour
         return false;
     }
 
+    private void CheckFinishedLevel()
+    {
+        if (currentRound >= totalRounds && activeGhosts.Count <= 0)
+        {
+            Debug.Log("Done win");
+            onLevelFinished.RaiseEvent();
+        }
+    }
+
     private void RemoveGhost(Ghost ghost)
     {
         if (activeGhosts != null)
         {
             activeGhosts.Remove(ghost);
+            deadEnemies++;
         }
     }
 
