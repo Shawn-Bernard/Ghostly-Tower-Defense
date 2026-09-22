@@ -1,10 +1,16 @@
 fileFormatVersion: 2
-guid: 54185a99c8aa3c141bf7eaa12450e1cd
+guid: 42eecdc360d28f4489d304d4f7004941
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -857910524347047555
-    second: mausoleum 2_0
+      213: 2465670612085925738
+    second: boomerange tower _0
+  - first:
+      213: -7216718859709177558
+    second: boomerange tower _1
+  - first:
+      213: 6207040148965271570
+    second: boomerange tower _2
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -51,7 +57,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 32
+  spritePixelsToUnits: 50
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -100,13 +106,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: mausoleum 2_0
+      name: boomerange tower _0
       rect:
         serializedVersion: 2
-        x: 17
-        y: 9
-        width: 80
-        height: 111
+        x: 15
+        y: 47
+        width: 16
+        height: 68
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +121,52 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: d71a93b6ce61814f0800000000000000
-      internalID: -857910524347047555
+      spriteID: a676086ab52d73220800000000000000
+      internalID: 2465670612085925738
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: boomerange tower _1
+      rect:
+        serializedVersion: 2
+        x: 52
+        y: 52
+        width: 38
+        height: 62
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a212c23de6019db90800000000000000
+      internalID: -7216718859709177558
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: boomerange tower _2
+      rect:
+        serializedVersion: 2
+        x: 107
+        y: 47
+        width: 38
+        height: 68
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 218a9a11126d32650800000000000000
+      internalID: 6207040148965271570
       vertices: []
       indices: 
       edges: []
@@ -135,7 +185,9 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      mausoleum 2_0: -857910524347047555
+      boomerange tower _0: 2465670612085925738
+      boomerange tower _1: -7216718859709177558
+      boomerange tower _2: 6207040148965271570
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 54185a99c8aa3c141bf7eaa12450e1cd
+guid: 296c63c7f367792498220b564c61d278
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -857910524347047555
-    second: mausoleum 2_0
+      213: 3855776948693654373
+    second: salt pile_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,13 +100,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: mausoleum 2_0
+      name: salt pile_0
       rect:
         serializedVersion: 2
-        x: 17
-        y: 9
-        width: 80
-        height: 111
+        x: 5
+        y: 10
+        width: 20
+        height: 15
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: d71a93b6ce61814f0800000000000000
-      internalID: -857910524347047555
+      spriteID: 56b5600c4b8728530800000000000000
+      internalID: 3855776948693654373
       vertices: []
       indices: 
       edges: []
@@ -135,7 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      mausoleum 2_0: -857910524347047555
+      salt pile_0: 3855776948693654373
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
