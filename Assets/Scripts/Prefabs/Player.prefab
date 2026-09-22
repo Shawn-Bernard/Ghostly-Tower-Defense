@@ -48,9 +48,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Player
   inputActions: {fileID: 11400000, guid: 98bd9d34f2639c24ebfdc9f425e681e6, type: 2}
   inventory: {fileID: 3918254867846777152}
-  selectedTower: {fileID: 0}
-  towerPickupDistance: 0
-  selectedTowerEvent: {fileID: 11400000, guid: 6d24384728f33754994c58410a0c503b, type: 2}
+  towerPickupDistance: 1
+  selectedWeaponEvent: {fileID: 11400000, guid: 3ecb2c9b140159743a64a828ca61be8d, type: 2}
+  gameplayState: {fileID: 11400000, guid: 3b36647d518becb4e9836c1078e316af, type: 2}
 --- !u!114 &3918254867846777152
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -65,16 +65,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Inventory
   inputActions: {fileID: 11400000, guid: 98bd9d34f2639c24ebfdc9f425e681e6, type: 2}
   loadout:
-  - {fileID: 820094443042145906, guid: d11ea0671ebec584896ae8c08c7c2e93, type: 3}
-  - {fileID: 3624184852576844074, guid: 9923cbdbec047734ebfdb3fee6be2a78, type: 3}
-  - {fileID: 3624184852576844074, guid: 9923cbdbec047734ebfdb3fee6be2a78, type: 3}
-  - {fileID: 3624184852576844074, guid: 9923cbdbec047734ebfdb3fee6be2a78, type: 3}
-  - {fileID: 3624184852576844074, guid: 9923cbdbec047734ebfdb3fee6be2a78, type: 3}
-  maxTowerCount: 5
+  - {fileID: 5520100758832570046, guid: a568c4124ebe06841bdd662ab8f6b970, type: 3}
+  - {fileID: 965176577016293657, guid: 428d42e37283b6c4f87c8ee00dd223d6, type: 3}
+  - {fileID: 2300249139957236957, guid: fd67cfc85beb2814dbd5999cbd8f2df2, type: 3}
+  - {fileID: 4992899337164637704, guid: a3b40497ebc5c9a4ea4387c022ccd207, type: 3}
+  - {fileID: 1348580166861515383, guid: e37398da8f0774740b23fe1572f5d26d, type: 3}
+  maxTowerCount: 7
   towerEvent: {fileID: 11400000, guid: 446ceae12205693429ce17b0dbe725f6, type: 2}
-  selectedTowerEvent: {fileID: 11400000, guid: 6d24384728f33754994c58410a0c503b, type: 2}
-  activeTowers: []
-  towerPlacementDistance: 0
+  selectedWeaponEvent: {fileID: 11400000, guid: 3ecb2c9b140159743a64a828ca61be8d, type: 2}
+  towerPlacementDistance: 1
+  gameplayState: {fileID: 11400000, guid: 3b36647d518becb4e9836c1078e316af, type: 2}
 --- !u!1 &9072998676910449234
 GameObject:
   m_ObjectHideFlags: 0

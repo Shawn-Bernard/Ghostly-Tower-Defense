@@ -40,16 +40,16 @@ public class Trap : Weapon
         }
 
     }
-    public virtual void Cancelled()
+    public override void Cancelled()
     {
 
     }
 
-    public virtual void Selected()
+    public override void Selected()
     {
     }
 
-    public virtual void Unselected()
+    public override void Unselected()
     {
     }
 }

@@ -144,6 +144,7 @@ MonoBehaviour:
   damageAmount: 1
   waypointEvent: {fileID: 11400000, guid: 8eb43d352fd1f7e43b9150fa303a553a, type: 2}
   ghostEvent: {fileID: 11400000, guid: 67b698e8915f8fb40bb512e7c7297f8c, type: 2}
+  gameplayState: {fileID: 11400000, guid: 3b36647d518becb4e9836c1078e316af, type: 2}
 --- !u!50 &3882309267884952138
 Rigidbody2D:
   serializedVersion: 5

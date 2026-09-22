@@ -13,6 +13,8 @@ public class Player : MonoBehaviour
     [SerializeField] float towerPickupDistance;
 
     [SerializeField] WeaponEvent selectedWeaponEvent;
+
+    [SerializeField] private GameState gameplayState;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -22,15 +24,15 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
-        Vector3 onScreenPosition = cursorPosition;
+        transform.position = cursorPosition;
+        HoldSelectedWeapon();
+    }
 
-        onScreenPosition.z = 0;
-
-        transform.position = onScreenPosition;
-
-        if (selectedWeapon != null )
+    private void HoldSelectedWeapon()
+    {
+        if (selectedWeapon != null)
         {
-            selectedWeapon.transform.position = onScreenPosition;
+            selectedWeapon.transform.position = cursorPosition;
         }
     }
 
@@ -84,7 +86,17 @@ public class Player : MonoBehaviour
         }
     }
 
-    //private void Handle()
+    private void DisableInputs()
+    {
+        inputActions.MoveEvent -= SetCursorScreenPosition;
+        inputActions.ActionStartedEvent -= Action;
+    }
+
+    private void EnableInputs()
+    {
+        inputActions.MoveEvent += SetCursorScreenPosition;
+        inputActions.ActionStartedEvent += Action;
+    }
 
     private void SetSelectedTower(Weapon newSelectedWeapon)
     {
@@ -93,20 +105,21 @@ public class Player : MonoBehaviour
             selectedWeapon.Cancelled();
         }
         selectedWeapon = newSelectedWeapon;
+        selectedWeapon.Selected();
     }
 
     private void OnEnable()
     {
-        inputActions.MoveEvent += SetCursorScreenPosition;
-        inputActions.ActionStartedEvent += Action;
+        gameplayState.onEnterState += EnableInputs;
+        gameplayState.onExitState += DisableInputs;
 
         selectedWeaponEvent.gameEvent += SetSelectedTower;
     }
 
     private void OnDisable()
     {
-        inputActions.MoveEvent -= SetCursorScreenPosition;
-        inputActions.ActionStartedEvent -= Action;
+        gameplayState.onEnterState += EnableInputs;
+        gameplayState.onExitState += DisableInputs;
 
         selectedWeaponEvent.gameEvent -= SetSelectedTower;
     }

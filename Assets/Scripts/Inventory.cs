@@ -8,10 +8,10 @@ public class Inventory : MonoBehaviour
     [SerializeField] private int maxTowerCount;
     [SerializeField] private TowerEvent towerEvent;
     [SerializeField] private WeaponEvent selectedWeaponEvent;
-    [SerializeField] private List<Tower> activeTowers;
+    private List<Tower> activeTowers;
 
     [SerializeField] private float towerPlacementDistance;
-
+    [SerializeField] private GameState gameplayState;
     private void Awake()
     {
         activeTowers = new List<Tower>();
@@ -48,9 +48,11 @@ public class Inventory : MonoBehaviour
     {
         if (loadout == null) return;
 
-        Weapon selectableToPlace = Instantiate(loadout[slotNumber]);
-
-        selectedWeaponEvent.RaiseEvent(selectableToPlace);
+        if (activeTowers.Count <= maxTowerCount)
+        {
+            Weapon selectableToPlace = Instantiate(loadout[slotNumber]);
+            selectedWeaponEvent.RaiseEvent(selectableToPlace);
+        }
     }
 
     public bool IsTowerTooClose(Tower tower)
@@ -86,13 +88,28 @@ public class Inventory : MonoBehaviour
     {
         activeTowers.Remove(tower);
     }
-    private void OnEnable()
+
+    private void DisableInputs()
+    {
+        inputActions.Slot1PerformedEvent -= SelectSlot1;
+        inputActions.Slot2PerformedEvent -= SelectSlot2;
+        inputActions.Slot3PerformedEvent -= SelectSlot3;
+        inputActions.Slot4PerformedEvent -= SelectSlot4;
+        inputActions.Slot5PerformedEvent -= SelectSlot5;
+    }
+
+    private void EnableInputs()
     {
         inputActions.Slot1PerformedEvent += SelectSlot1;
         inputActions.Slot2PerformedEvent += SelectSlot2;
         inputActions.Slot3PerformedEvent += SelectSlot3;
-        inputActions.Slot3PerformedEvent += SelectSlot4;
-        inputActions.Slot3PerformedEvent += SelectSlot5;
+        inputActions.Slot4PerformedEvent += SelectSlot4;
+        inputActions.Slot5PerformedEvent += SelectSlot5;
+    }
+    private void OnEnable()
+    {
+        gameplayState.onEnterState += EnableInputs;
+        gameplayState.onExitState += DisableInputs;
 
         towerEvent.registerEvent += AddTower;
         towerEvent.unregisterEvent += RemoveTower;
@@ -100,11 +117,8 @@ public class Inventory : MonoBehaviour
 
     private void OnDisable()
     {
-        inputActions.Slot1PerformedEvent -= SelectSlot1;
-        inputActions.Slot2PerformedEvent -= SelectSlot2;
-        inputActions.Slot3PerformedEvent -= SelectSlot3;
-        inputActions.Slot4PerformedEvent -= SelectSlot4;
-        inputActions.Slot5PerformedEvent -= SelectSlot5;
+        gameplayState.onEnterState -= EnableInputs;
+        gameplayState.onExitState -= DisableInputs;
 
         towerEvent.registerEvent -= AddTower;
         towerEvent.unregisterEvent -= RemoveTower;

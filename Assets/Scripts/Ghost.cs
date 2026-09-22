@@ -12,16 +12,11 @@ public class Ghost : MonoBehaviour
     private int currentWaypointIndex;
     [SerializeField] private WaypointEvent waypointEvent;
     [SerializeField] private GhostEvent ghostEvent;
+    [SerializeField] private GameState gameplayState;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         SetWaypoint();
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        HandleMovement();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -71,11 +66,13 @@ public class Ghost : MonoBehaviour
 
     private void OnEnable()
     {
+        gameplayState.onUpdateState += HandleMovement;
         ghostEvent.RegisterGhost(this);
     }
 
     private void OnDisable()
     {
+        gameplayState.onUpdateState -= HandleMovement;
         ghostEvent.UnregisterGhost(this);
     }
 
