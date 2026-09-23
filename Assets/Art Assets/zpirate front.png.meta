@@ -1,13 +1,19 @@
 fileFormatVersion: 2
-guid: 3402acab3e7c3cc48ae07cbb28794dc0
+guid: b0fbbc3261856304c8ffff4a7cc280e7
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 1921053324792869636
-    second: gate_0
+      213: -2847397060110112092
+    second: zpirate front_0
   - first:
-      213: 4456625509452935546
-    second: gate_1
+      213: 3184130533756245624
+    second: zpirate front_1
+  - first:
+      213: 337191052814198981
+    second: zpirate front_2
+  - first:
+      213: 6187628015246193966
+    second: zpirate front_3
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -54,7 +60,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 50
+  spritePixelsToUnits: 64
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -103,23 +109,89 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: gate_0
+      name: zpirate front_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 112
-        height: 112
+        x: 7
+        y: 73
+        width: 43
+        height: 55
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 403bcda12d3f8aa10800000000000000
-      internalID: 1921053324792869636
+      spriteID: 4aa25a1c5730c78d0800000000000000
+      internalID: -2847397060110112092
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: zpirate front_1
+      rect:
+        serializedVersion: 2
+        x: 7
+        y: 16
+        width: 42
+        height: 57
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8761407a9dd403c20800000000000000
+      internalID: 3184130533756245624
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: zpirate front_2
+      rect:
+        serializedVersion: 2
+        x: 61
+        y: 73
+        width: 43
+        height: 55
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5c82e6cd971fda400800000000000000
+      internalID: 337191052814198981
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: zpirate front_3
+      rect:
+        serializedVersion: 2
+        x: 62
+        y: 17
+        width: 42
+        height: 56
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e25310b75eeded550800000000000000
+      internalID: 6187628015246193966
       vertices: []
       indices: 
       edges: []
@@ -128,7 +200,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 78dd2c90f1e035d4886d625273c72696
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
@@ -136,11 +208,12 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     spriteCustomMetadata:
-      entries:
-      - key: SpriteEditor.SliceSettings
-        value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":112.0,"y":112.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":1,"keepEmptyRects":false,"isAlternate":false}'
+      entries: []
     nameFileIdTable:
-      gate_0: 1921053324792869636
+      zpirate front_0: -2847397060110112092
+      zpirate front_1: 3184130533756245624
+      zpirate front_2: 337191052814198981
+      zpirate front_3: 6187628015246193966
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

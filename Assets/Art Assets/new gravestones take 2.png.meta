@@ -1,13 +1,19 @@
 fileFormatVersion: 2
-guid: 3402acab3e7c3cc48ae07cbb28794dc0
+guid: 21dda6a865847cd428bd1320f9acb909
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 1921053324792869636
-    second: gate_0
+      213: -30225378686612449
+    second: new gravestones take 2_0
   - first:
-      213: 4456625509452935546
-    second: gate_1
+      213: 2197868223645049112
+    second: new gravestones take 2_1
+  - first:
+      213: 7855679247266833085
+    second: new gravestones take 2_2
+  - first:
+      213: 5224568739983927585
+    second: new gravestones take 2_3
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -54,7 +60,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 50
+  spritePixelsToUnits: 40
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -103,23 +109,89 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: gate_0
+      name: new gravestones take 2_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 112
-        height: 112
+        x: 4
+        y: 36
+        width: 27
+        height: 28
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 403bcda12d3f8aa10800000000000000
-      internalID: 1921053324792869636
+      spriteID: f1cce20ad2e949ff0800000000000000
+      internalID: -30225378686612449
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: new gravestones take 2_1
+      rect:
+        serializedVersion: 2
+        x: 36
+        y: 36
+        width: 27
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8116b7d2185608e10800000000000000
+      internalID: 2197868223645049112
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: new gravestones take 2_2
+      rect:
+        serializedVersion: 2
+        x: 4
+        y: 4
+        width: 27
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: db26fba77aaf40d60800000000000000
+      internalID: 7855679247266833085
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: new gravestones take 2_3
+      rect:
+        serializedVersion: 2
+        x: 35
+        y: 0
+        width: 28
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1292a5b8695618840800000000000000
+      internalID: 5224568739983927585
       vertices: []
       indices: 
       edges: []
@@ -128,7 +200,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 78dd2c90f1e035d4886d625273c72696
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
@@ -136,11 +208,12 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     spriteCustomMetadata:
-      entries:
-      - key: SpriteEditor.SliceSettings
-        value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":112.0,"y":112.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":1,"keepEmptyRects":false,"isAlternate":false}'
+      entries: []
     nameFileIdTable:
-      gate_0: 1921053324792869636
+      new gravestones take 2_0: -30225378686612449
+      new gravestones take 2_1: 2197868223645049112
+      new gravestones take 2_2: 7855679247266833085
+      new gravestones take 2_3: 5224568739983927585
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
