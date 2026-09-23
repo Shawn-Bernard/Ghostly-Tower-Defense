@@ -11,12 +11,14 @@ public class RoundManager : MonoBehaviour
     [SerializeField] private int enemiesPerWave; // How many enemies spawn per wave in a round
     [SerializeField] private int totalWaves; // How many waves spawn per round
     [SerializeField] private float waveInterval; // Wait time per wave in a round
+    [SerializeField] private int ghostDifficultyOffset; // Lower will make it easier, higher will make it harder
     private int totalEnemies;
     private int deadEnemies;
     private int currentWave;
     private int currentRound;
     private bool hasRoundStarted;
 
+    private Ghost selectedGhostForWave;
     [SerializeField] private WaypointEvent waypointEvent;
     [SerializeField] private Vector2 spawnPoint;
 
@@ -55,6 +57,7 @@ public class RoundManager : MonoBehaviour
         {
             currentWave++;
             waveStringEvent.RaiseEvent(currentWave.ToString(), totalWaves.ToString());
+            SelectGhost();
             for (int enemyCount = 0; enemyCount < enemiesPerWave; enemyCount++)
             {
                 SpawnGhost();
@@ -66,13 +69,28 @@ public class RoundManager : MonoBehaviour
         hasRoundStarted = false;
         
     }
+    /// <summary>
+    /// Selects a random ghost to spawn into the next wave
+    /// </summary>
+    private void SelectGhost()
+    {
+        int strongestGhostIndex = Mathf.Clamp(
+            // round 1 + wave 1 = 2 - 2 offset = index 0, so only ghost level 1 can spawn
+            currentRound + currentWave - ghostDifficultyOffset,
+            0,
+            ghostTypes.Count - 1
+        );
+
+        int randomGhostIndex = Random.Range(0, strongestGhostIndex + 1);
+
+        selectedGhostForWave = ghostTypes[randomGhostIndex];
+    }
 
     private void SpawnGhost()
     {
-        Ghost ghost = ghostTypes[0];
 
-        Instantiate(ghost, (Vector3)spawnPoint,Quaternion.identity);
-        ghost.gameObject.SetActive(true);
+        Instantiate(selectedGhostForWave, (Vector3)spawnPoint,Quaternion.identity);
+        selectedGhostForWave.gameObject.SetActive(true);
     }
 
     private void StartRound()

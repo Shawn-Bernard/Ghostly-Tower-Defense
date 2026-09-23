@@ -11,13 +11,11 @@ public class PlayerBaseHealthSystem : HealthSystem
     private void OnEnable()
     {
         onDamageTaken.AddListener(UpdateHealthText);
-        onDamageTaken.AddListener(CheckDeath);
     }
 
     private void OnDisable()
     {
         onDamageTaken.RemoveListener(UpdateHealthText);
-        onDamageTaken.RemoveListener(CheckDeath);
     }
 
     private void UpdateHealthText()

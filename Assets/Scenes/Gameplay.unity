@@ -574,16 +574,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 669e5dadc5157c84d82039de6e250826, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::WaveManager
-  totalRounds: 1
+  totalRounds: 3
   spawnInterval: 0.3
   enemiesPerWave: 3
-  totalWaves: 2
+  totalWaves: 4
   waveInterval: 1
+  ghostDifficultyOffset: 2
   waypointEvent: {fileID: 11400000, guid: 8eb43d352fd1f7e43b9150fa303a553a, type: 2}
   spawnPoint: {x: 0, y: 0}
   activeGhosts: []
   ghostTypes:
+  - {fileID: 3979777220852619386, guid: 8278813253f92c140b6091d177852d62, type: 3}
   - {fileID: 3979777220852619386, guid: acdeff8eb2eb30b49962f06487d30820, type: 3}
+  - {fileID: 3979777220852619386, guid: 7e1634bbd2d042c42a57afdc198b7733, type: 3}
+  - {fileID: 3979777220852619386, guid: e35192cebcd27c54b92156abd25d6ce4, type: 3}
   startRoundEvent: {fileID: 11400000, guid: 47f32a537b8410a43bea4bb08eeade55, type: 2}
   onLevelFinished: {fileID: 11400000, guid: 99e7ea0afce8beb4ca568269236cb629, type: 2}
   ghostEvent: {fileID: 11400000, guid: 67b698e8915f8fb40bb512e7c7297f8c, type: 2}
@@ -1053,7 +1057,7 @@ Transform:
   m_GameObject: {fileID: 1139605851}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.85546017, y: 3.5, z: 0}
+  m_LocalPosition: {x: 10.35546, y: 3.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:

@@ -20,6 +20,7 @@ public class HealthSystem : MonoBehaviour, IDamageable
         currentHealth = Mathf.Max(currentHealth - damage,0);
 
         onDamageTaken?.Invoke();
+        CheckDeath();
     }
 
     protected void CheckDeath()
@@ -33,15 +34,5 @@ public class HealthSystem : MonoBehaviour, IDamageable
     private void ResetLife()
     {
         currentHealth = maxHealth;
-    }
-
-    private void OnEnable()
-    {
-        onDamageTaken.AddListener(CheckDeath);
-    }
-
-    private void OnDisable()
-    {
-        onDamageTaken.RemoveListener(CheckDeath);
     }
 }
