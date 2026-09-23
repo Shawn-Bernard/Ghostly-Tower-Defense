@@ -7,6 +7,7 @@ public interface ISelectable
 
     public abstract void Unselected();
 
-    public abstract void Cancelled();
+    public abstract void PickUp();
+
 
 }

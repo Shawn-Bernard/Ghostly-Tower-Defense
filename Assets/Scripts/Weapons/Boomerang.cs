@@ -54,25 +54,4 @@ public class Boomerang : Bullet
 
         damageable.TakeDamage(damageAmount);
     }
-    private void OnDrawGizmos()
-    {
-        // REMOVE THIS BEFORE TESTING PLEASE IT'LL CHANGE IN GAME TIME
-        /*
-        startPosition = transform.position;
-        targetPosition = startPosition + transform.up * range;
-        middlePosition = (startPosition + targetPosition) / 2;
-        */
-        Vector3 rightPosition = middlePosition + transform.right * curveRange;
-        Vector3 leftPosition = middlePosition + -transform.right * curveRange;
-        Gizmos.color = Color.yellow;
-
-        
-        Gizmos.DrawLine (startPosition, rightPosition);
-
-        Gizmos.DrawLine(rightPosition, targetPosition);
-
-        Gizmos.DrawLine(targetPosition, leftPosition);
-
-        Gizmos.DrawLine(leftPosition, startPosition);
-    }
 }

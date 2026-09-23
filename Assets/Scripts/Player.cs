@@ -69,7 +69,7 @@ public class Player : MonoBehaviour
                     // Comparing distance to see if u can place tower
                     if (!inventory.IsTowerTooClose(tower))
                     {
-                        weaponToPlace.Unselected();
+                        weaponToPlace.Place();
                         weaponToPlace = null;
                         break;
                     }
@@ -77,7 +77,7 @@ public class Player : MonoBehaviour
             }
             else // If its not a tower then deselect
             {
-                weaponToPlace.Unselected();
+                weaponToPlace.Place();
                 weaponToPlace = null;
             }
         }
@@ -117,7 +117,7 @@ public class Player : MonoBehaviour
 
         if (weaponToPlace != null)
         {
-            weaponToPlace.Selected();
+            weaponToPlace.PickUp();
         }
     }
 

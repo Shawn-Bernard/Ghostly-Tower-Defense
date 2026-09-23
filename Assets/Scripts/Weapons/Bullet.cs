@@ -57,7 +57,6 @@ public class Bullet : MonoBehaviour
     {
         if (damageAmount <= 0)
         {
-            Debug.LogError($"{gameObject.name} damage amount was 0, defaulting to 1");
             damageAmount = 1;
         }
     }

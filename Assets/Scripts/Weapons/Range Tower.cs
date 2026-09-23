@@ -6,7 +6,7 @@ public class RangeTower : Tower
 
     protected override void PerformAttack()
     {
-        if (target == null || isSelected) return;
+        if (target == null || !isPlaced) return;
 
         if (!target.activeInHierarchy)
         {

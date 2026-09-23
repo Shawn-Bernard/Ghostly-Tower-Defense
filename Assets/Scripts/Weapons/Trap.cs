@@ -20,6 +20,7 @@ public class Trap : Weapon
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        if (!isPlaced) return;
         if (charges == 0) return;
 
         if (collision.CompareTag("Enemy"))
@@ -36,20 +37,8 @@ public class Trap : Weapon
 
         if (charges == 0)
         {
-            gameObject.SetActive(false);
+            Destroy(gameObject);
         }
 
-    }
-    public override void Cancelled()
-    {
-
-    }
-
-    public override void Selected()
-    {
-    }
-
-    public override void Unselected()
-    {
     }
 }

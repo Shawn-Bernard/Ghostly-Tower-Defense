@@ -7,7 +7,7 @@ public class LaserTower : Tower
 
     protected override void PerformAttack()
     {
-        if (target == null || isSelected)
+        if (target == null || !isPlaced)
             return;
 
         RaycastHit2D[] hits = Physics2D.RaycastAll(

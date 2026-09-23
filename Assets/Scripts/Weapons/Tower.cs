@@ -7,8 +7,7 @@ public class Tower : Weapon
     [SerializeField] private float attackCooldown;
 
 
-    [SerializeField] protected bool canAttack;
-    [SerializeField] protected bool isSelected;
+    protected bool canAttack;
 
     [SerializeField] private TowerEvent towerEvent;
 
@@ -29,7 +28,7 @@ public class Tower : Weapon
     {
         if (target != null)
         {
-            if (!target.activeInHierarchy || isSelected) target = null;
+            if (!target.activeInHierarchy || !isPlaced) target = null;
 
 
             float angle = GetAngle(target.transform.position, transform.position);
@@ -40,7 +39,7 @@ public class Tower : Weapon
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (isSelected) return;
+        if (!isPlaced) return;
 
         if (collision.CompareTag("Enemy"))
         {
@@ -56,7 +55,7 @@ public class Tower : Weapon
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (isSelected) return;
+        if (!isPlaced) return;
 
         if (collision.CompareTag("Enemy"))
         {
@@ -73,23 +72,16 @@ public class Tower : Weapon
 
     public override void Selected()
     {
+        base.Selected();
         oldPosition = transform.position;
-        canAttack = false;
         StopCoroutine(Attack());
-        isSelected = true;
         target = null;
     }
 
     public override void Unselected()
     {
+        base.Unselected();
         oldPosition = transform.position;
-        isSelected = false;
-        canAttack = true;
-    }
-
-    public override void Cancelled()
-    {
-        transform.position = oldPosition;
     }
 
     protected float GetAngle(Vector2 targetPosition,Vector2 fromPosition)
