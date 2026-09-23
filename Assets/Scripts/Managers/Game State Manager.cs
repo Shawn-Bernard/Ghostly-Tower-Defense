@@ -67,6 +67,21 @@ public class GameStateManager : MonoBehaviour
         ChangeGameState(lastState);
     }
 
+    public void HandlePauseState()
+    {
+        if (currentState == gameplayState || currentState == pauseState)
+        {
+            if (currentState == pauseState)
+            {
+                SwitchToLastState();
+            }
+            else
+            {
+                SwitchToPause();
+            }
+        }
+    }
+
     private void OnEnable()
     {
         onMainMenu.gameEvent += SwitchToMenu;
@@ -74,6 +89,7 @@ public class GameStateManager : MonoBehaviour
 
         onPauseStart.gameEvent += SwitchToPause;
         onPauseEnd.gameEvent += SwitchToLastState;
+
 
         onPlayerDeath.gameEvent += SwitchToGameOver;
         onLevelFinished.gameEvent += SwitchToWinner;

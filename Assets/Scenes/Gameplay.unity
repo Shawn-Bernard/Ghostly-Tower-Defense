@@ -575,11 +575,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::WaveManager
   totalRounds: 3
-  spawnInterval: 0.3
+  spawnInterval: 0.5
   enemiesPerWave: 3
-  totalWaves: 4
-  waveInterval: 1
-  ghostDifficultyOffset: 2
+  totalWaves: 6
+  waveInterval: 2
+  ghostDifficultyOffset: 0
   waypointEvent: {fileID: 11400000, guid: 8eb43d352fd1f7e43b9150fa303a553a, type: 2}
   spawnPoint: {x: 0, y: 0}
   activeGhosts: []

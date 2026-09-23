@@ -1,5 +1,5 @@
 ﻿using UnityEngine;
-using UnityEngine.InputSystem;
+using UnityEngine.Events;
 
 public class Player : MonoBehaviour
 {
@@ -16,6 +16,10 @@ public class Player : MonoBehaviour
     [SerializeField] WeaponEvent selectedWeaponEvent;
 
     [SerializeField] private GameState gameplayState;
+
+    [SerializeField] private UnityEvent onSelectedWeapon;
+    [SerializeField] private UnityEvent onUnselectedWeapon;
+    [SerializeField] private UnityEvent pauseEvent;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -49,6 +53,8 @@ public class Player : MonoBehaviour
 
         Collider2D[] hits = Physics2D.OverlapPointAll(onScreenPosition);
 
+        
+
         // Deals with inventory weapon to be placed
         if (weaponToPlace != null) 
         {
@@ -76,7 +82,7 @@ public class Player : MonoBehaviour
             }
         }
 
-
+        
         // Deals with selecting a weapon
         foreach (var hit in hits)
         {
@@ -92,6 +98,7 @@ public class Player : MonoBehaviour
                     }
                     selectedWeapon = weapon;
                     selectedWeapon.Selected();
+                    onSelectedWeapon?.Invoke();
                     break;
                 }
             }
@@ -114,22 +121,52 @@ public class Player : MonoBehaviour
         }
     }
 
+    private void UnselectWeapon()
+    {
+        if (selectedWeapon != null)
+        {
+            selectedWeapon.Unselected();
+            selectedWeapon = null;
+            onUnselectedWeapon?.Invoke();
+        }
+    }
+    private void Pause()
+    {
+        pauseEvent?.Invoke();
+    }
+
+    public void DestroySelectedWeapon()
+    {
+        if (selectedWeapon != null)
+        {
+            Destroy(selectedWeapon.gameObject);
+
+            selectedWeapon = null;
+            onUnselectedWeapon?.Invoke();
+        }
+    }
+
     private void DisableInputs()
     {
         inputActions.MoveEvent -= SetCursorScreenPosition;
         inputActions.ActionStartedEvent -= Action;
+        inputActions.UnselectPerformedEvent -= UnselectWeapon;
+
     }
 
     private void EnableInputs()
     {
         inputActions.MoveEvent += SetCursorScreenPosition;
         inputActions.ActionStartedEvent += Action;
+        inputActions.UnselectPerformedEvent += UnselectWeapon;
     }
 
     private void OnEnable()
     {
         gameplayState.onEnterState += EnableInputs;
         gameplayState.onExitState += DisableInputs;
+
+        inputActions.PauseStartedEvent += Pause;
 
         selectedWeaponEvent.gameEvent += SetSelectedTower;
     }
@@ -138,6 +175,8 @@ public class Player : MonoBehaviour
     {
         gameplayState.onEnterState -= EnableInputs;
         gameplayState.onExitState -= DisableInputs;
+
+        inputActions.PauseStartedEvent -= Pause;
 
         selectedWeaponEvent.gameEvent -= SetSelectedTower;
     }

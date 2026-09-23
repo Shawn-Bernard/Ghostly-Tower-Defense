@@ -19,12 +19,15 @@ public class PlayerInputActions : ScriptableObject, InputActions.IPlayerActions
     public event UnityAction ActionCanceledEvent;
     #endregion
 
-    #region Interact Events
-    public event UnityAction InteractStartedEvent;
-    public event UnityAction InteractCanceledEvent;
-    public event UnityAction InteractPerformedEvent;
-
+    #region Unselect Events
+    public event UnityAction UnselectPerformedEvent;
     #endregion
+
+    #region Pause Events
+    public event UnityAction PauseStartedEvent;
+    public event UnityAction PauseCanceledEvent;
+    #endregion
+
 
     #region Slot 1 Events
     public event UnityAction Slot1StartedEvent;
@@ -77,34 +80,36 @@ public class PlayerInputActions : ScriptableObject, InputActions.IPlayerActions
             ActionCanceledEvent?.Invoke();
         }
     }
+    public void OnUnselect(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+        {
+            UnselectPerformedEvent?.Invoke();
+        }
+    }
 
-    public void OnInteract(InputAction.CallbackContext context)
+    public void OnPause(InputAction.CallbackContext context)
     {
         if (context.started)
         {
-            InteractStartedEvent?.Invoke();
+            PauseStartedEvent?.Invoke();
         }
 
         if (context.canceled)
         {
-            InteractCanceledEvent?.Invoke();
-        }
-
-        if (context.performed)
-        {
-            InteractPerformedEvent?.Invoke();
+            PauseCanceledEvent?.Invoke();
         }
     }
     public void OnTowerSlot1(InputAction.CallbackContext context)
     {
         if (context.started)
         {
-            Slot1PerformedEvent?.Invoke();
+            Slot1StartedEvent?.Invoke();
         }
 
         if (context.performed)
         {
-            Slot1StartedEvent?.Invoke();
+            Slot1PerformedEvent?.Invoke();
         }
     }
 
@@ -112,12 +117,12 @@ public class PlayerInputActions : ScriptableObject, InputActions.IPlayerActions
     {
         if (context.started)
         {
-            Slot2PerformedEvent?.Invoke();
+            Slot2StartedEvent?.Invoke();
         }
 
         if (context.performed)
         {
-            Slot2StartedEvent?.Invoke();
+            Slot2PerformedEvent?.Invoke();
         }
     }
 
@@ -125,24 +130,24 @@ public class PlayerInputActions : ScriptableObject, InputActions.IPlayerActions
     {
         if (context.started)
         {
-            Slot3PerformedEvent?.Invoke();
+            Slot3StartedEvent?.Invoke();
         }
 
         if (context.performed)
         {
-            Slot3StartedEvent?.Invoke();
+            Slot3PerformedEvent?.Invoke();
         }
     }
     public void OnTowerSlot4(InputAction.CallbackContext context)
     {
         if (context.started)
         {
-            Slot4PerformedEvent?.Invoke();
+            Slot4StartedEvent?.Invoke();
         }
 
         if (context.performed)
         {
-            Slot4StartedEvent?.Invoke();
+            Slot4PerformedEvent?.Invoke();
         }
     }
 
@@ -150,12 +155,12 @@ public class PlayerInputActions : ScriptableObject, InputActions.IPlayerActions
     {
         if (context.started)
         {
-            Slot5PerformedEvent?.Invoke();
+            Slot5StartedEvent?.Invoke();
         }
 
         if (context.performed)
         {
-            Slot5StartedEvent?.Invoke();
+            Slot5PerformedEvent?.Invoke();
         }
     }
     private void OnEnable()
@@ -168,6 +173,4 @@ public class PlayerInputActions : ScriptableObject, InputActions.IPlayerActions
     {
         inputActions.Player.Disable();
     }
-
-    
 }
