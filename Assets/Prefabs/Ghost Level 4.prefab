@@ -227,11 +227,11 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 3979777220852619386}
         m_TargetAssemblyTypeName: Ghost, Assembly-CSharp
-        m_MethodName: DestroySelf
-        m_Mode: 1
+        m_MethodName: Rebirth
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgument: {fileID: 3979777220852619386, guid: 7e1634bbd2d042c42a57afdc198b7733, type: 3}
+          m_ObjectArgumentAssemblyTypeName: Ghost, Assembly-CSharp
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
