@@ -6,19 +6,29 @@ public class Ghost : MonoBehaviour
     [Range(.01f, 0.5f)]
     [SerializeField] private float distanceWaypointCheck;
 
+    [SerializeField] private int damageAmount;
+
     private Vector2 currentWaypoint;
-    [SerializeField] private int currentWaypointIndex;
+    private int currentWaypointIndex;
     [SerializeField] private WaypointEvent waypointEvent;
+    [SerializeField] private GhostEvent ghostEvent;
+    [SerializeField] private GameState gameplayState;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-
+        SetWaypoint();
     }
 
-    // Update is called once per frame
-    void Update()
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        HandleMovement();
+        if (collision.CompareTag("Player"))
+        {
+            if (collision.TryGetComponent<IDamageable>(out IDamageable damageable))
+            {
+                damageable.TakeDamage(damageAmount);
+                DestroySelf();
+            }
+        }
     }
 
     private void HandleMovement()
@@ -49,9 +59,21 @@ public class Ghost : MonoBehaviour
         
     }
 
-    private void Death()
+    public void DestroySelf()
     {
-        gameObject.SetActive(false);
-        currentWaypointIndex = 0;
+        Destroy(gameObject);
     }
+
+    private void OnEnable()
+    {
+        gameplayState.onUpdateState += HandleMovement;
+        ghostEvent.RegisterGhost(this);
+    }
+
+    private void OnDisable()
+    {
+        gameplayState.onUpdateState -= HandleMovement;
+        ghostEvent.UnregisterGhost(this);
+    }
+
 }

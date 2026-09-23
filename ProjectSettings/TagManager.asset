@@ -5,6 +5,9 @@ TagManager:
   serializedVersion: 3
   tags:
   - Waypoint
+  - Enemy
+  - Placeable
+  - Weapon
   layers:
   - Default
   - TransparentFX
