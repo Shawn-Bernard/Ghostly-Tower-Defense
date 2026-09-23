@@ -113,6 +113,11 @@ public class Player : MonoBehaviour
             Destroy(weaponToPlace.gameObject);
         }
 
+        if (selectedWeapon != null)
+        {
+            UnselectWeapon();
+        }
+
         weaponToPlace = newSelectedWeapon;
 
         if (weaponToPlace != null)
