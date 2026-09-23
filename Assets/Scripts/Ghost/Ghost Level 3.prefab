@@ -139,7 +139,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc91ef4cfbc82684485ea2f5328cf09a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 4
+  moveSpeed: 3
   distanceWaypointCheck: 0.01
   damageAmount: 1
   waypointEvent: {fileID: 11400000, guid: 8eb43d352fd1f7e43b9150fa303a553a, type: 2}
