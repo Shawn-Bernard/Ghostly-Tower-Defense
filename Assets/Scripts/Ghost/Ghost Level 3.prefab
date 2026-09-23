@@ -139,9 +139,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc91ef4cfbc82684485ea2f5328cf09a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ghostAnimator: {fileID: 0}
   moveSpeed: 3
   distanceWaypointCheck: 0.01
   damageAmount: 1
+  moveDirection: {x: 0, y: 0}
   waypointEvent: {fileID: 11400000, guid: 8eb43d352fd1f7e43b9150fa303a553a, type: 2}
   ghostEvent: {fileID: 11400000, guid: 67b698e8915f8fb40bb512e7c7297f8c, type: 2}
   gameplayState: {fileID: 11400000, guid: 3b36647d518becb4e9836c1078e316af, type: 2}

@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7252398635364536654}
   - component: {fileID: 6391602685939466059}
+  - component: {fileID: 5092648345841110881}
   m_Layer: 0
   m_Name: Ghost Visual
   m_TagString: Untagged
@@ -91,6 +92,28 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
+--- !u!95 &5092648345841110881
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4419548421329993055}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 190022b016a14e241948d23f041a4c60, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &6460494626266534436
 GameObject:
   m_ObjectHideFlags: 0
@@ -139,9 +162,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc91ef4cfbc82684485ea2f5328cf09a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ghostAnimator: {fileID: 5092648345841110881}
   moveSpeed: 2
   distanceWaypointCheck: 0.01
   damageAmount: 1
+  moveDirection: {x: 0, y: 0}
   waypointEvent: {fileID: 11400000, guid: 8eb43d352fd1f7e43b9150fa303a553a, type: 2}
   ghostEvent: {fileID: 11400000, guid: 67b698e8915f8fb40bb512e7c7297f8c, type: 2}
   gameplayState: {fileID: 11400000, guid: 3b36647d518becb4e9836c1078e316af, type: 2}
