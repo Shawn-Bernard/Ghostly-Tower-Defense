@@ -1,50 +1,47 @@
 using UnityEngine;
 
-[CreateAssetMenu(menuName = "Sound Manager", fileName = "Sound Manager")]
-public class SoundManager : ScriptableObject
+public class SoundManager : MonoBehaviour
 {
-    private static SoundManager instance;
+    public static SoundManager Instance { get; private set; }
 
-    public static SoundManager Instance
+    private void Awake()
     {
-        get 
-        { 
-            if (instance == null)
-            {
-                instance = Resources.Load<SoundManager>("Sound Manager");
-            }
-            return instance; 
+        if (Instance != null && Instance != this)
+        {
+            Destroy(gameObject);
+            return;
         }
+        Instance = this;
+        DontDestroyOnLoad(gameObject);
     }
-    public AudioSource soundObject;
-
-    private static float volumeChangeMultiplier = 0.15f;
-    private static float pitchChangeMultiplier = 0.1f;
-
-    public static void PlaySoundClip(AudioClip clip, Vector2 soundPosition,float volume)
+    /// <summary>
+    /// Plays a audio clip at a position with volume
+    /// </summary>
+    /// <param name="clip"></param>
+    /// <param name="position"></param>
+    /// <param name="volume"></param>
+    public void PlaySound(AudioClip clip, Vector2 position, float volume)
     {
-        float randomVolume = Random.Range(volume - volumeChangeMultiplier, volume + volumeChangeMultiplier);
-        float randomPitch = Random.Range(1 - pitchChangeMultiplier, 1 + pitchChangeMultiplier);
+        if (clip == null) return;
 
-        AudioSource audioSource = Instantiate(instance.soundObject, soundPosition, Quaternion.identity);
+        Vector3 spawnPosition = position;
 
-        audioSource.clip = clip;
-        audioSource.volume = randomVolume;
-        audioSource.pitch = randomPitch;
-        audioSource.Play();
+        AudioSource.PlayClipAtPoint(clip, spawnPosition, volume);
     }
-
-    public static void PlaySoundClip(AudioClip[] clips, Vector2 soundPosition, float volume)
+    /// <summary>
+    /// Plays a random audio clip from a array of clips at a position, with volume
+    /// </summary>
+    /// <param name="clips"></param>
+    /// <param name="position"></param>
+    /// <param name="volume"></param>
+    public void PlayRandomSound(AudioClip[] clips, Vector2 position, float volume)
     {
-        int randomClip = Random.Range(0, clips.Length);
-        float randomVolume = Random.Range(volume - volumeChangeMultiplier, volume + volumeChangeMultiplier);
-        float randomPitch = Random.Range(1 - pitchChangeMultiplier, 1 + pitchChangeMultiplier);
+        if (clips == null || clips.Length == 0) return;
 
-        AudioSource audioSource = Instantiate(instance.soundObject, soundPosition, Quaternion.identity);
+        AudioClip clip = clips[Random.Range(0, clips.Length)];
 
-        audioSource.clip = clips[randomClip];
-        audioSource.volume = randomVolume;
-        audioSource.pitch = randomPitch;
-        audioSource.Play();
+        Vector3 spawnPosition = position;
+
+        AudioSource.PlayClipAtPoint(clip, spawnPosition, volume);
     }
 }
