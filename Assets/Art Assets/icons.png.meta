@@ -1,19 +1,19 @@
 fileFormatVersion: 2
-guid: d5f6d4788d378674d86eb42c3a1f75d3
+guid: 9359e96e511c9274e91069871e847f11
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 8933379558015637856
-    second: gun turret_0
+      213: -2978653956524333172
+    second: icons_0
   - first:
-      213: 2512239475158977738
-    second: gun turret_1
+      213: -299690340437171572
+    second: icons_1
   - first:
-      213: 5740112043827875682
-    second: gun turret_2
+      213: -1290855366162983238
+    second: icons_2
   - first:
-      213: 3982541579713419669
-    second: gun turret_3
+      213: -2248273014285675650
+    second: icons_3
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -60,7 +60,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 40
+  spritePixelsToUnits: 16
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -109,89 +109,89 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: gun turret_0
+      name: icons_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 15
+        width: 15
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c872e841202b9a6d0800000000000000
+      internalID: -2978653956524333172
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: icons_1
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 64
-        height: 64
+        width: 15
+        height: 16
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 069124f706db9fb70800000000000000
-      internalID: 8933379558015637856
+      spriteID: c8260a3293947dbf0800000000000000
+      internalID: -299690340437171572
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: gun turret_1
+      name: icons_2
       rect:
         serializedVersion: 2
-        x: 64
+        x: 15
         y: 0
-        width: 64
-        height: 64
+        width: 17
+        height: 16
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: acc80930e744dd220800000000000000
-      internalID: 2512239475158977738
+      spriteID: ab6d27b32e5f51ee0800000000000000
+      internalID: -1290855366162983238
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: gun turret_2
+      name: icons_3
       rect:
         serializedVersion: 2
-        x: 128
-        y: 0
-        width: 64
-        height: 64
+        x: 16
+        y: 16
+        width: 15
+        height: 16
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 26f4d4fcd79f8af40800000000000000
-      internalID: 5740112043827875682
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: gun turret_3
-      rect:
-        serializedVersion: 2
-        x: 192
-        y: 0
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 5999a026774d44730800000000000000
-      internalID: 3982541579713419669
+      spriteID: e73d769fa978cc0e0800000000000000
+      internalID: -2248273014285675650
       vertices: []
       indices: 
       edges: []
@@ -200,7 +200,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 1a54b0b6ceded3b4bb04de64835b05e7
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
@@ -208,14 +208,12 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     spriteCustomMetadata:
-      entries:
-      - key: SpriteEditor.SliceSettings
-        value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":64.0,"y":64.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":1,"keepEmptyRects":false,"isAlternate":false}'
+      entries: []
     nameFileIdTable:
-      gun turret_0: 8933379558015637856
-      gun turret_1: 2512239475158977738
-      gun turret_2: 5740112043827875682
-      gun turret_3: 3982541579713419669
+      icons_0: -2978653956524333172
+      icons_1: -299690340437171572
+      icons_2: -1290855366162983238
+      icons_3: -2248273014285675650
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

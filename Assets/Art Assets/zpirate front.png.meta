@@ -112,10 +112,10 @@ TextureImporter:
       name: zpirate front_0
       rect:
         serializedVersion: 2
-        x: 7
-        y: 73
+        x: 6
+        y: 72
         width: 43
-        height: 55
+        height: 56
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}

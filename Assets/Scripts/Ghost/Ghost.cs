@@ -13,6 +13,7 @@ public class Ghost : MonoBehaviour
     private int currentWaypointIndex;
 
     [SerializeField] private Vector2 moveDirection;
+    private int lastWaypointIndex;
     [SerializeField] private WaypointEvent waypointEvent;
     [SerializeField] private GhostEvent ghostEvent;
     [SerializeField] private GameState gameplayState;
@@ -59,10 +60,12 @@ public class Ghost : MonoBehaviour
 
     private void SetWaypoint()
     {
+        
         currentWaypoint = waypointEvent.GetWaypoint(currentWaypointIndex);
         // Vector zero is the *null* return so reset or count up
         if (currentWaypoint != Vector2.zero)
         {
+            lastWaypointIndex = currentWaypointIndex;
             currentWaypointIndex++;
         }
         else
@@ -70,12 +73,24 @@ public class Ghost : MonoBehaviour
             // Reached the end of the path so maybe kill ghost or disable
             currentWaypointIndex = 0;
         }
-        
+    }
+
+    public void SetIndex(int newIndex)
+    {
+        currentWaypointIndex = newIndex;
     }
 
     public void DestroySelf()
     {
         Destroy(gameObject);
+    }
+
+    public void Rebirth(Ghost ghost)
+    {
+        Ghost newGhost = Instantiate(ghost,transform.position,Quaternion.identity);
+        newGhost.SetIndex(lastWaypointIndex);
+        newGhost.transform.position = transform.position;
+        DestroySelf();
     }
 
     private void OnEnable()
