@@ -1,9 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class Tower : Weapon
 {
+    [SerializeField] private Animator towerAnimator;
     [SerializeField] private float attackCooldown;
 
 
@@ -13,8 +15,8 @@ public class Tower : Weapon
 
     protected List<GameObject> targets;
     [SerializeField] protected GameObject target;
+    [SerializeField] protected Vector2 direction;
 
-    private Vector2 oldPosition;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -26,14 +28,22 @@ public class Tower : Weapon
     // Update is called once per frame
     void Update()
     {
+        HandleAnimation();
+    }
+
+    private void HandleAnimation()
+    {
         if (target != null)
         {
             if (!target.activeInHierarchy || !isPlaced) target = null;
 
+            direction = (transform.position - target.transform.position).normalized;
 
-            float angle = GetAngle(target.transform.position, transform.position);
-
-            transform.rotation = Quaternion.Euler(0, 0, angle);
+            if (towerAnimator != null)
+            {
+                towerAnimator.SetFloat("x", direction.x);
+                towerAnimator.SetFloat("y", direction.y);
+            }
         }
     }
 
@@ -73,7 +83,6 @@ public class Tower : Weapon
     public override void Selected()
     {
         base.Selected();
-        oldPosition = transform.position;
         StopCoroutine(Attack());
         target = null;
     }
@@ -81,15 +90,19 @@ public class Tower : Weapon
     public override void Unselected()
     {
         base.Unselected();
-        oldPosition = transform.position;
     }
 
     protected float GetAngle(Vector2 targetPosition,Vector2 fromPosition)
     {
         float angleOffset = 90f;
-        Vector2 direction = targetPosition - fromPosition;
+        Vector2 direction = GetDirection(targetPosition,fromPosition);
         float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg - angleOffset;
         return angle;
+    }
+    protected Vector2 GetDirection(Vector2 targetPosition, Vector2 fromPosition)
+    {
+        Vector2 direction = (targetPosition - fromPosition).normalized;
+        return direction;
     }
 
     protected virtual void PerformAttack()
@@ -103,8 +116,9 @@ public class Tower : Weapon
     protected virtual IEnumerator Attack()
     {
         canAttack = false;
-
+        
         FindClosestTarget();
+        if (towerAnimator != null) towerAnimator.SetTrigger("isAttacking");
         PerformAttack();
 
         yield return new WaitForSeconds(attackCooldown);
