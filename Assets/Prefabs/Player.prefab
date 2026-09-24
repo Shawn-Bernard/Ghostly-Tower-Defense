@@ -51,6 +51,15 @@ MonoBehaviour:
   towerPickupDistance: 1
   selectedWeaponEvent: {fileID: 11400000, guid: 3ecb2c9b140159743a64a828ca61be8d, type: 2}
   gameplayState: {fileID: 11400000, guid: 3b36647d518becb4e9836c1078e316af, type: 2}
+  onSelectedWeapon:
+    m_PersistentCalls:
+      m_Calls: []
+  onUnselectedWeapon:
+    m_PersistentCalls:
+      m_Calls: []
+  pauseEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &3918254867846777152
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -75,6 +84,7 @@ MonoBehaviour:
   selectedWeaponEvent: {fileID: 11400000, guid: 3ecb2c9b140159743a64a828ca61be8d, type: 2}
   towerPlacementDistance: 1
   gameplayState: {fileID: 11400000, guid: 3b36647d518becb4e9836c1078e316af, type: 2}
+  towersStringEvent: {fileID: 11400000, guid: 4f0be09321d3985478615e5731245e55, type: 2}
 --- !u!1 &9072998676910449234
 GameObject:
   m_ObjectHideFlags: 0

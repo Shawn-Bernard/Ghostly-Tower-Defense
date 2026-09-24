@@ -12,9 +12,17 @@ public class Inventory : MonoBehaviour
 
     [SerializeField] private float towerPlacementDistance;
     [SerializeField] private GameState gameplayState;
+    [SerializeField] private StringEvent towersStringEvent;
+    
     private void Awake()
     {
         activeTowers = new List<Tower>();
+
+    }
+
+    private void Update()
+    {
+        if (towersStringEvent != null) towersStringEvent.RaiseEvent(activeTowers.Count.ToString(), maxTowerCount.ToString());
     }
 
     public void SelectSlot1()
@@ -79,8 +87,11 @@ public class Inventory : MonoBehaviour
     {
         if (activeTowers.Count >= maxTowerCount)
         {
-            tower.gameObject.SetActive(false);
+            Debug.Log("too much");
+            Destroy(tower);
+            return;
         }
+        towersStringEvent.RaiseEvent(activeTowers.Count.ToString(), maxTowerCount.ToString());
         activeTowers.Add(tower);
     }
 
