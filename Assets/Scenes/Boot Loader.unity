@@ -175,10 +175,22 @@ PrefabInstance:
       propertyPath: m_Name
       value: Game Manager
       objectReference: {fileID: 0}
+    - target: {fileID: 2725480509709488448, guid: e0750996b5a95d743b2f39eebb069055, type: 3}
+      propertyPath: m_Name
+      value: Tower Info
+      objectReference: {fileID: 0}
+    - target: {fileID: 3863756588800266881, guid: e0750996b5a95d743b2f39eebb069055, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4997609372955421799, guid: e0750996b5a95d743b2f39eebb069055, type: 3}
       propertyPath: m_TargetGraphic
       value: 
       objectReference: {fileID: 1644984831464002783}
+    - target: {fileID: 5308855892660832320, guid: e0750996b5a95d743b2f39eebb069055, type: 3}
+      propertyPath: m_fontColor32.rgba
+      value: 4294967295
+      objectReference: {fileID: 0}
     - target: {fileID: 8524402650478649016, guid: e0750996b5a95d743b2f39eebb069055, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
