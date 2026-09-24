@@ -29,7 +29,7 @@ public class RoundManager : MonoBehaviour
     [SerializeField] private VoidEvent onLevelFinished;
     [SerializeField] private GhostEvent ghostEvent;
 
-    [SerializeField] private StringEvent waveStringEvent;
+    
     [SerializeField] private StringEvent roundStringEvent;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -37,7 +37,6 @@ public class RoundManager : MonoBehaviour
     {
         spawnPoint = waypointEvent.GetWaypoint(0);
         totalEnemies = enemiesPerWave * totalWaves;
-        waveStringEvent.RaiseEvent(currentWave.ToString(), totalWaves.ToString());
 
         roundStringEvent.RaiseEvent(currentRound.ToString(), totalRounds.ToString());
     }
@@ -51,12 +50,11 @@ public class RoundManager : MonoBehaviour
     private IEnumerator SpawnWaves()
     {
         hasRoundStarted = true;
-
         
         for (int currentWaveLoop = 0; currentWaveLoop < totalWaves; currentWaveLoop++)
         {
             currentWave++;
-            waveStringEvent.RaiseEvent(currentWave.ToString(), totalWaves.ToString());
+            
             SelectGhost();
             for (int enemyCount = 0; enemyCount < enemiesPerWave; enemyCount++)
             {
