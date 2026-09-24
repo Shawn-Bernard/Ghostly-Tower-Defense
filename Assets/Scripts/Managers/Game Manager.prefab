@@ -1307,7 +1307,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Wave : 0/10'
+  m_text: 'Tower : 0/10'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -1875,8 +1875,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::GameplayMenu
   baseHealth: {fileID: 2041841011279351278}
   healthStringEvent: {fileID: 11400000, guid: b9945b65c23b3d847a3a7efad9a60e42, type: 2}
-  waveInfo: {fileID: 7496414017957724263}
-  waveStringEvent: {fileID: 11400000, guid: 4f0be09321d3985478615e5731245e55, type: 2}
+  towerInfo: {fileID: 7496414017957724263}
+  towerStringEvent: {fileID: 11400000, guid: 4f0be09321d3985478615e5731245e55, type: 2}
   roundInfo: {fileID: 4100587934561714815}
   roundStringEvent: {fileID: 11400000, guid: 8012d5ceaf492454e8a0c12657ff698c, type: 2}
 --- !u!1 &4080351717697767465
