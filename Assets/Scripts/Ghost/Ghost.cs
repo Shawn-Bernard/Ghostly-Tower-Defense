@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class Ghost : MonoBehaviour
 {
+    [SerializeField] private Animator ghostAnimator;
     [SerializeField] private float moveSpeed;
     [Range(.01f, 0.5f)]
     [SerializeField] private float distanceWaypointCheck;
@@ -10,6 +11,8 @@ public class Ghost : MonoBehaviour
 
     private Vector2 currentWaypoint;
     private int currentWaypointIndex;
+
+    [SerializeField] private Vector2 moveDirection;
     private int lastWaypointIndex;
     [SerializeField] private WaypointEvent waypointEvent;
     [SerializeField] private GhostEvent ghostEvent;
@@ -40,7 +43,18 @@ public class Ghost : MonoBehaviour
         }
         else
         {
-            transform.position = Vector2.MoveTowards(transform.position, currentWaypoint, moveSpeed * Time.deltaTime);
+            moveDirection = (currentWaypoint - (Vector2)transform.position).normalized;
+
+            transform.position = Vector2.MoveTowards(transform.position,currentWaypoint,moveSpeed * Time.deltaTime);
+        }
+    }
+
+    private void HandleAnimation()
+    {
+        if (ghostAnimator != null)
+        {
+            ghostAnimator.SetFloat("x", moveDirection.x);
+            ghostAnimator.SetFloat("y", moveDirection.y);
         }
     }
 
@@ -82,12 +96,14 @@ public class Ghost : MonoBehaviour
     private void OnEnable()
     {
         gameplayState.onUpdateState += HandleMovement;
+        gameplayState.onUpdateState += HandleAnimation;
         ghostEvent.RegisterGhost(this);
     }
 
     private void OnDisable()
     {
         gameplayState.onUpdateState -= HandleMovement;
+        gameplayState.onUpdateState -= HandleAnimation;
         ghostEvent.UnregisterGhost(this);
     }
 

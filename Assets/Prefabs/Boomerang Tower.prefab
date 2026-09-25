@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 6258468616812296815}
   - component: {fileID: 3650495690781303723}
   - component: {fileID: 6311788571995570102}
+  - component: {fileID: 1370892565624115872}
   m_Layer: 3
   m_Name: Tower Visual
   m_TagString: Weapon
@@ -128,6 +129,28 @@ CircleCollider2D:
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
   m_Radius: 0.6
+--- !u!95 &1370892565624115872
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 994452065468233309}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: ec59c5e2e794561498f882183ac0ae1e, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &4288291662935186411
 GameObject:
   m_ObjectHideFlags: 0
@@ -272,9 +295,11 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  towerAnimator: {fileID: 1370892565624115872}
   attackCooldown: 0.7
   towerEvent: {fileID: 11400000, guid: 446ceae12205693429ce17b0dbe725f6, type: 2}
   target: {fileID: 0}
+  direction: {x: 0, y: 0}
   bullet: {fileID: 6135450429939528417}
 --- !u!1 &6135450429939528417
 GameObject:
@@ -419,7 +444,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 48b8c5cdbdaa22749aff7f39017e1fa6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Boomerang
-  moveSpeed: 11
+  moveSpeed: 15
   damageAmount: 1
   range: 5
   curveRange: 0.5

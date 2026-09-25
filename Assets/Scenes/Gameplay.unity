@@ -543,6 +543,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3655217230924025727, guid: 2e5dce2a9e6ef394c99d77e7e01c5eb5, type: 3}
+      propertyPath: ghostDifficultyOffset
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3655217230924025727, guid: 2e5dce2a9e6ef394c99d77e7e01c5eb5, type: 3}
+      propertyPath: ghostTypes.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3655217230924025727, guid: 2e5dce2a9e6ef394c99d77e7e01c5eb5, type: 3}
+      propertyPath: 'ghostTypes.Array.data[0]'
+      value: 
+      objectReference: {fileID: 3979777220852619386, guid: e35192cebcd27c54b92156abd25d6ce4, type: 3}
     - target: {fileID: 3819163979208189425, guid: 2e5dce2a9e6ef394c99d77e7e01c5eb5, type: 3}
       propertyPath: m_Name
       value: Round Manager
@@ -603,6 +615,10 @@ PrefabInstance:
     - target: {fileID: 1697609093567716608, guid: 2115b3095a20b21408face3ac14f5cd8, type: 3}
       propertyPath: m_Name
       value: Player Base
+      objectReference: {fileID: 0}
+    - target: {fileID: 1697609093567716608, guid: 2115b3095a20b21408face3ac14f5cd8, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8562698494710456760, guid: 2115b3095a20b21408face3ac14f5cd8, type: 3}
       propertyPath: m_LocalPosition.x

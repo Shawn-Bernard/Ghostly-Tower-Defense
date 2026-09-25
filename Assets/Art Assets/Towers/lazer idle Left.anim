@@ -6,7 +6,7 @@ AnimationClip:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: gun idel
+  m_Name: lazer idle Left
   serializedVersion: 7
   m_Legacy: 0
   m_Compressed: 0
@@ -21,7 +21,7 @@ AnimationClip:
   - serializedVersion: 2
     curve:
     - time: 0
-      value: {fileID: 8933379558015637856, guid: d5f6d4788d378674d86eb42c3a1f75d3, type: 3}
+      value: {fileID: -1794403518811214892, guid: e1a451a6161701e4ba166dba15f466e3, type: 3}
     attribute: m_Sprite
     path: 
     classID: 212
@@ -44,7 +44,7 @@ AnimationClip:
       isIntCurve: 0
       isSerializeReferenceCurve: 0
     pptrCurveMapping:
-    - {fileID: 8933379558015637856, guid: d5f6d4788d378674d86eb42c3a1f75d3, type: 3}
+    - {fileID: -1794403518811214892, guid: e1a451a6161701e4ba166dba15f466e3, type: 3}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}

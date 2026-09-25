@@ -102,7 +102,7 @@ Animator:
   m_GameObject: {fileID: 4419548421329993055}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 310968f247d53a94cb8a85c8fc911699, type: 2}
+  m_Controller: {fileID: 9100000, guid: 190022b016a14e241948d23f041a4c60, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -162,12 +162,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc91ef4cfbc82684485ea2f5328cf09a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ghostAnimator: {fileID: 8428623123148567053}
   moveSpeed: 2
   distanceWaypointCheck: 0.01
   damageAmount: 1
+  moveDirection: {x: 0, y: 0}
   waypointEvent: {fileID: 11400000, guid: 8eb43d352fd1f7e43b9150fa303a553a, type: 2}
   ghostEvent: {fileID: 11400000, guid: 67b698e8915f8fb40bb512e7c7297f8c, type: 2}
   gameplayState: {fileID: 11400000, guid: 3b36647d518becb4e9836c1078e316af, type: 2}
+  ghostSprite: {fileID: 6391602685939466059}
 --- !u!50 &3882309267884952138
 Rigidbody2D:
   serializedVersion: 5

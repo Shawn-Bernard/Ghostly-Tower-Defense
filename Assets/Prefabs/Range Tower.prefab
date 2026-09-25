@@ -144,9 +144,11 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  towerAnimator: {fileID: 7700563353368997364}
   attackCooldown: 0.7
   towerEvent: {fileID: 11400000, guid: 446ceae12205693429ce17b0dbe725f6, type: 2}
   target: {fileID: 0}
+  direction: {x: 0, y: 0}
   bullet: {fileID: 5449704312246139590}
 --- !u!1 &3513340334847498319
 GameObject:
@@ -250,6 +252,7 @@ GameObject:
   - component: {fileID: 1435416001454686802}
   - component: {fileID: 3390786082227112165}
   - component: {fileID: 8366991946322728683}
+  - component: {fileID: 7700563353368997364}
   m_Layer: 3
   m_Name: Tower Visual
   m_TagString: Weapon
@@ -367,6 +370,28 @@ CircleCollider2D:
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
   m_Radius: 0.5
+--- !u!95 &7700563353368997364
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4288120965756735895}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: c3ed85b73c15c9842ba7dd6b13bb8cf5, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &5449704312246139590
 GameObject:
   m_ObjectHideFlags: 0
@@ -472,7 +497,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 751db9a1f23f6dd4baafd55293f9ad6b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Bullet
-  moveSpeed: 11
+  moveSpeed: 14
   damageAmount: 1
 --- !u!70 &7301119799577034234
 CapsuleCollider2D:

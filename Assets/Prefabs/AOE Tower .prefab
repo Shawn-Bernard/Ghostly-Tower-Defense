@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 6248782189886436754}
   - component: {fileID: 7890795840011808559}
   - component: {fileID: 1492359125086129917}
+  - component: {fileID: 2263933305160838911}
   m_Layer: 3
   m_Name: Tower Visual
   m_TagString: Weapon
@@ -30,7 +31,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 6284867607037174507}
   m_Father: {fileID: 1018868575394710524}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &7890795840011808559
@@ -128,6 +130,28 @@ CircleCollider2D:
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
   m_Radius: 0.6
+--- !u!95 &2263933305160838911
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2509528935228669097}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 0450b37b1a567b1458ef7cae8e002c51, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &3988554965325634432
 GameObject:
   m_ObjectHideFlags: 0
@@ -140,7 +164,7 @@ GameObject:
   - component: {fileID: 6018491528199449859}
   - component: {fileID: 4992899337164637704}
   m_Layer: 3
-  m_Name: 'Melee Tower '
+  m_Name: 'AOE Tower '
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -161,7 +185,6 @@ Transform:
   m_Children:
   - {fileID: 6248782189886436754}
   - {fileID: 7879150511743299909}
-  - {fileID: 6284867607037174507}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!58 &6018491528199449859
@@ -272,11 +295,27 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  towerAnimator: {fileID: 2263933305160838911}
   attackCooldown: 2
   towerEvent: {fileID: 11400000, guid: 446ceae12205693429ce17b0dbe725f6, type: 2}
   target: {fileID: 0}
+  direction: {x: 0, y: 0}
   damageAmount: 2
-  magicring: {fileID: 4364487711204249497}
+  onAttack:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 5010753790198570818}
+        m_TargetAssemblyTypeName: SpriteAffects, Assembly-CSharp
+        m_MethodName: FadeIn
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &4364487711204249497
 GameObject:
   m_ObjectHideFlags: 0
@@ -287,6 +326,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6284867607037174507}
   - component: {fileID: 819542978100773066}
+  - component: {fileID: 5010753790198570818}
   m_Layer: 0
   m_Name: magic ring squished_0
   m_TagString: Untagged
@@ -308,7 +348,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2228461969657465767}
-  m_Father: {fileID: 1018868575394710524}
+  m_Father: {fileID: 6248782189886436754}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &819542978100773066
 SpriteRenderer:
@@ -369,6 +409,20 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
+--- !u!114 &5010753790198570818
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4364487711204249497}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ea52394a8c19d243bfc22c2d5b5f332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SpriteAffects
+  spriteRenderer: {fileID: 819542978100773066}
+  fadeSpeed: -11.51
 --- !u!1 &4548991740482918673
 GameObject:
   m_ObjectHideFlags: 0
