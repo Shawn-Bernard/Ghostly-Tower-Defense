@@ -544,14 +544,6 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 3655217230924025727, guid: 2e5dce2a9e6ef394c99d77e7e01c5eb5, type: 3}
-      propertyPath: totalWaves
-      value: 8
-      objectReference: {fileID: 0}
-    - target: {fileID: 3655217230924025727, guid: 2e5dce2a9e6ef394c99d77e7e01c5eb5, type: 3}
-      propertyPath: enemiesPerWave
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 3655217230924025727, guid: 2e5dce2a9e6ef394c99d77e7e01c5eb5, type: 3}
       propertyPath: ghostDifficultyOffset
       value: 2
       objectReference: {fileID: 0}

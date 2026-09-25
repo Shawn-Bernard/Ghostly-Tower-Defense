@@ -14,6 +14,7 @@ public class RangeTower : Tower
         }
         else
         {
+            base.PerformAttack();
             bullet.transform.position = transform.position;
             bullet.transform.rotation = transform.rotation;
 

@@ -39,11 +39,12 @@ public class Tower : Weapon
 
             direction = (transform.position - target.transform.position).normalized;
 
-            if (towerAnimator != null)
-            {
-                towerAnimator.SetFloat("x", direction.x);
-                towerAnimator.SetFloat("y", direction.y);
-            }
+            
+        }
+        if (towerAnimator != null)
+        {
+            towerAnimator.SetFloat("x", direction.x);
+            towerAnimator.SetFloat("y", direction.y);
         }
     }
 
@@ -80,17 +81,6 @@ public class Tower : Weapon
         }
     }
 
-    public override void Selected()
-    {
-        base.Selected();
-        StopCoroutine(Attack());
-        target = null;
-    }
-
-    public override void Unselected()
-    {
-        base.Unselected();
-    }
 
     protected float GetAngle(Vector2 targetPosition,Vector2 fromPosition)
     {
@@ -107,6 +97,7 @@ public class Tower : Weapon
 
     protected virtual void PerformAttack()
     {
+        
     }
     /// <summary>
     /// Starts shoot and waits for cooldown = attack rate and checks for new targets 
@@ -115,14 +106,12 @@ public class Tower : Weapon
 
     protected virtual IEnumerator Attack()
     {
-        canAttack = false;
-        
         FindClosestTarget();
-        if (towerAnimator != null) towerAnimator.SetTrigger("isAttacking");
+        towerAnimator.SetTrigger("isAttacking");
         PerformAttack();
-
+        canAttack = false;
         yield return new WaitForSeconds(attackCooldown);
-
+        
         canAttack = true;
 
         if (targets.Count > 0)
