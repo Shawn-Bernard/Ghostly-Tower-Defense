@@ -13,7 +13,7 @@ public class GameplayMenu : MonoBehaviour
 
     private void SetBaseHealthText(string health)
     {
-        baseHealth.text = $"Base Health : {health}";
+        baseHealth.text = $"Gate Health : {health}";
     }
 
     private void SetWaveText(string currentTowers,string totalTowers)

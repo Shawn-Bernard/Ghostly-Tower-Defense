@@ -175,6 +175,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Game Manager
       objectReference: {fileID: 0}
+    - target: {fileID: 2126920220256687139, guid: e0750996b5a95d743b2f39eebb069055, type: 3}
+      propertyPath: orthographic size
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 2725480509709488448, guid: e0750996b5a95d743b2f39eebb069055, type: 3}
       propertyPath: m_Name
       value: Tower Info
@@ -190,6 +194,10 @@ PrefabInstance:
     - target: {fileID: 5308855892660832320, guid: e0750996b5a95d743b2f39eebb069055, type: 3}
       propertyPath: m_fontColor32.rgba
       value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 7877107278841667488, guid: e0750996b5a95d743b2f39eebb069055, type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8524402650478649016, guid: e0750996b5a95d743b2f39eebb069055, type: 3}
       propertyPath: m_LocalPosition.x
@@ -232,7 +240,8 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 4145031681076481283, guid: e0750996b5a95d743b2f39eebb069055, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e0750996b5a95d743b2f39eebb069055, type: 3}
