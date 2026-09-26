@@ -81,7 +81,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 4
   m_MaskInteraction: 0
-  m_Sprite: {fileID: 1921053324792869636, guid: 3402acab3e7c3cc48ae07cbb28794dc0, type: 3}
+  m_Sprite: {fileID: -857910524347047555, guid: 54185a99c8aa3c141bf7eaa12450e1cd, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -136,7 +136,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 669e5dadc5157c84d82039de6e250826, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::WaveManager
-  totalRounds: 3
+  totalRounds: 6
   spawnInterval: 0.5
   enemiesPerWave: 3
   totalWaves: 6
