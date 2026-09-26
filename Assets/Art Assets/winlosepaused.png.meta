@@ -148,9 +148,9 @@ TextureImporter:
       name: winlosepaused_0
       rect:
         serializedVersion: 2
-        x: 0
+        x: 130
         y: 264
-        width: 536
+        width: 406
         height: 86
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -170,9 +170,9 @@ TextureImporter:
       name: winlosepaused_1
       rect:
         serializedVersion: 2
-        x: 0
+        x: 234
         y: 178
-        width: 536
+        width: 221
         height: 86
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -192,9 +192,9 @@ TextureImporter:
       name: winlosepaused_2
       rect:
         serializedVersion: 2
-        x: 0
+        x: 24
         y: 92
-        width: 536
+        width: 286
         height: 86
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -214,9 +214,9 @@ TextureImporter:
       name: winlosepaused_3
       rect:
         serializedVersion: 2
-        x: 0
+        x: 24
         y: 6
-        width: 536
+        width: 246
         height: 86
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
