@@ -87,7 +87,7 @@ public class LevelManager : MonoBehaviour
 
     public void LoadGameplay()
     {
-        LoadScene("Gameplay");
+        LoadScene("Level 1");
     }
 
     public void LoadNextLevel()

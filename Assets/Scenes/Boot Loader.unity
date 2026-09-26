@@ -175,6 +175,30 @@ PrefabInstance:
       propertyPath: m_Name
       value: Game Manager
       objectReference: {fileID: 0}
+    - target: {fileID: 2126920220256687139, guid: e0750996b5a95d743b2f39eebb069055, type: 3}
+      propertyPath: orthographic size
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 2725480509709488448, guid: e0750996b5a95d743b2f39eebb069055, type: 3}
+      propertyPath: m_Name
+      value: Tower Info
+      objectReference: {fileID: 0}
+    - target: {fileID: 3863756588800266881, guid: e0750996b5a95d743b2f39eebb069055, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4997609372955421799, guid: e0750996b5a95d743b2f39eebb069055, type: 3}
+      propertyPath: m_TargetGraphic
+      value: 
+      objectReference: {fileID: 1644984831464002783}
+    - target: {fileID: 5308855892660832320, guid: e0750996b5a95d743b2f39eebb069055, type: 3}
+      propertyPath: m_fontColor32.rgba
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 7877107278841667488, guid: e0750996b5a95d743b2f39eebb069055, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8524402650478649016, guid: e0750996b5a95d743b2f39eebb069055, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -216,10 +240,22 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 4145031681076481283, guid: e0750996b5a95d743b2f39eebb069055, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e0750996b5a95d743b2f39eebb069055, type: 3}
+--- !u!114 &1644984831464002783 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 548880155119092196, guid: e0750996b5a95d743b2f39eebb069055, type: 3}
+  m_PrefabInstance: {fileID: 1644984831464002782}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

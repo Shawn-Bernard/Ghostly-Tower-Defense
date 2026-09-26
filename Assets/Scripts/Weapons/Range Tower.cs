@@ -14,12 +14,13 @@ public class RangeTower : Tower
         }
         else
         {
+            base.PerformAttack();
             bullet.transform.position = transform.position;
             bullet.transform.rotation = transform.rotation;
 
-            float angle = GetAngle(target.transform.position, bullet.transform.position);
+            Vector2 bulletDirection = GetDirection(target.transform.position, bullet.transform.position);
 
-            bullet.transform.rotation = Quaternion.Euler(0, 0, angle);
+            bullet.transform.up = bulletDirection;
 
             bullet.SetActive(true);
 
