@@ -3301,7 +3301,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::InventorySlot
   weapon: {fileID: 965176577016293657, guid: 428d42e37283b6c4f87c8ee00dd223d6, type: 3}
-  coinInfo: {fileID: 0}
+  coinInfo: {fileID: 2076314298404956313}
 --- !u!1 &6163605000477145436
 GameObject:
   m_ObjectHideFlags: 0
