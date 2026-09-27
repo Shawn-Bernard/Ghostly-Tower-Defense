@@ -13,6 +13,8 @@ public class SoundManager : MonoBehaviour
 
     [Range(0,1)]
     [SerializeField] private float backGroundMusicVolume;
+    [Range(0, 1)]
+    [SerializeField] private float SFXVolume;
 
     [SerializeField] private GameState mainMenu;
     [SerializeField] private GameState gameplayState;
@@ -80,13 +82,13 @@ public class SoundManager : MonoBehaviour
     /// <param name="clip"></param>
     /// <param name="position"></param>
     /// <param name="volume"></param>
-    public void PlaySound(AudioClip clip, Vector2 position, float volume)
+    public void PlaySound(AudioClip clip, Vector2 position)
     {
         if (clip == null) return;
 
-        Vector3 spawnPosition = position;
+        Vector3 spawnPosition = Camera.main.transform.position;
 
-        AudioSource.PlayClipAtPoint(clip, spawnPosition, volume);
+        AudioSource.PlayClipAtPoint(clip, spawnPosition, SFXVolume);
     }
     /// <summary>
     /// Plays a random audio clip from a array of clips at a position, with volume
@@ -94,15 +96,15 @@ public class SoundManager : MonoBehaviour
     /// <param name="clips"></param>
     /// <param name="position"></param>
     /// <param name="volume"></param>
-    public void PlayRandomSound(AudioClip[] clips, Vector2 position, float volume)
+    public void PlayRandomSounds(AudioClip[] clips)
     {
         if (clips == null || clips.Length == 0) return;
 
         AudioClip clip = clips[Random.Range(0, clips.Length)];
 
-        Vector3 spawnPosition = position;
+        Vector3 spawnPosition = Camera.main.transform.position;
 
-        AudioSource.PlayClipAtPoint(clip, spawnPosition, volume);
+        AudioSource.PlayClipAtPoint(clip, spawnPosition, SFXVolume);
     }
     #endregion
 }

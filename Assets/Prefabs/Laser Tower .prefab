@@ -239,6 +239,8 @@ MonoBehaviour:
   towerEvent: {fileID: 11400000, guid: 446ceae12205693429ce17b0dbe725f6, type: 2}
   target: {fileID: 0}
   direction: {x: 0, y: 0}
+  attackSounds:
+  - {fileID: 8300000, guid: b1dbc60fec015174da5241701533cd8c, type: 3}
   damageAmount: 1
   range: 3
 --- !u!1 &2935130892962002089

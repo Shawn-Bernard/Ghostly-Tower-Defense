@@ -1991,6 +1991,10 @@ PrefabInstance:
       propertyPath: m_LocalPosition.x
       value: -4.141
       objectReference: {fileID: 0}
+    - target: {fileID: 5289272435313590298, guid: 0c48ad5f8888f444890c617b855587d1, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 6701184984338717731, guid: 0c48ad5f8888f444890c617b855587d1, type: 3}
       propertyPath: m_LocalPosition.x
       value: 5.67482
@@ -7398,18 +7402,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 31128172517159032, guid: 2115b3095a20b21408face3ac14f5cd8, type: 3}
-      propertyPath: m_Size.x
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 31128172517159032, guid: 2115b3095a20b21408face3ac14f5cd8, type: 3}
-      propertyPath: m_Offset.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 31128172517159032, guid: 2115b3095a20b21408face3ac14f5cd8, type: 3}
-      propertyPath: m_Offset.y
-      value: -0.45
-      objectReference: {fileID: 0}
     - target: {fileID: 122908678859943457, guid: 2115b3095a20b21408face3ac14f5cd8, type: 3}
       propertyPath: m_Sprite
       value: 
@@ -7418,6 +7410,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player Base
       objectReference: {fileID: 0}
+    - target: {fileID: 2443120496193155136, guid: 2115b3095a20b21408face3ac14f5cd8, type: 3}
+      propertyPath: damagedSounds.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2443120496193155136, guid: 2115b3095a20b21408face3ac14f5cd8, type: 3}
+      propertyPath: 'damagedSounds.Array.data[0]'
+      value: 
+      objectReference: {fileID: 8300000, guid: 3523be2222222de4c877b8772f10acfe, type: 3}
     - target: {fileID: 8562698494710456760, guid: 2115b3095a20b21408face3ac14f5cd8, type: 3}
       propertyPath: m_LocalPosition.x
       value: 7.4699993

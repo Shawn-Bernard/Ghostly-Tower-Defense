@@ -10,6 +10,9 @@ public class HealthSystem : MonoBehaviour, IDamageable
     [SerializeField] protected UnityEvent onDeath;
     [SerializeField] protected UnityEvent onDamageTaken;
 
+    [SerializeField] private AudioClip[] damagedSounds;
+    [SerializeField] private AudioClip[] deathSounds;
+
     private void Awake()
     {
         ResetLife();
@@ -20,6 +23,7 @@ public class HealthSystem : MonoBehaviour, IDamageable
         currentHealth = Mathf.Max(currentHealth - damage,0);
 
         onDamageTaken?.Invoke();
+        if (damagedSounds != null) SoundManager.Instance.PlayRandomSounds(damagedSounds);
         CheckDeath();
     }
 
@@ -27,6 +31,7 @@ public class HealthSystem : MonoBehaviour, IDamageable
     {
         if (currentHealth <= 0)
         {
+            if (deathSounds != null) SoundManager.Instance.PlayRandomSounds(deathSounds);
             onDeath?.Invoke();
         }
     }
