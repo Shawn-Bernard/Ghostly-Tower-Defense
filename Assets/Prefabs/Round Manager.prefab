@@ -141,7 +141,7 @@ MonoBehaviour:
   enemiesPerWave: 4
   totalWaves: 4
   waveInterval: 2
-  ghostDifficultyOffset: 1
+  ghostDifficultyOffset: 0
   waypointEvent: {fileID: 11400000, guid: 8eb43d352fd1f7e43b9150fa303a553a, type: 2}
   spawnPoint: {x: 0, y: 0}
   activeGhosts: []

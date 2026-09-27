@@ -256,7 +256,7 @@ GameObject:
   - component: {fileID: 6018491528199449859}
   - component: {fileID: 4992899337164637704}
   m_Layer: 3
-  m_Name: 'AOE Tower '
+  m_Name: AOE Tower
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -389,13 +389,13 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   towerAnimator: {fileID: 2263933305160838911}
-  attackCooldown: 2
+  attackCooldown: 1.25
   towerEvent: {fileID: 11400000, guid: 446ceae12205693429ce17b0dbe725f6, type: 2}
   target: {fileID: 0}
   direction: {x: 0, y: 0}
   attackSounds:
   - {fileID: 8300000, guid: f29ea44a93a06d64189d1a4adbeace98, type: 3}
-  damageAmount: 3
+  damageAmount: 5
 --- !u!1 &4548991740482918673
 GameObject:
   m_ObjectHideFlags: 0

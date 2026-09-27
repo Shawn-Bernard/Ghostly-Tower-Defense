@@ -146,7 +146,7 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   towerAnimator: {fileID: 7700563353368997364}
-  attackCooldown: 0.7
+  attackCooldown: 0.5
   towerEvent: {fileID: 11400000, guid: 446ceae12205693429ce17b0dbe725f6, type: 2}
   target: {fileID: 0}
   direction: {x: 0, y: 0}
