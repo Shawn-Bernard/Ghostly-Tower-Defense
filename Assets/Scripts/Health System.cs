@@ -13,6 +13,7 @@ public class HealthSystem : MonoBehaviour, IDamageable
     [SerializeField] private AudioClip[] damagedSounds;
     [SerializeField] private AudioClip[] deathSounds;
 
+    [SerializeField] private int deathCoins;
     private void Awake()
     {
         ResetLife();
@@ -33,6 +34,10 @@ public class HealthSystem : MonoBehaviour, IDamageable
         {
             if (deathSounds != null) SoundManager.Instance.PlayRandomSounds(deathSounds);
             onDeath?.Invoke();
+            if (gameObject.CompareTag("Enemy"))
+            {
+                Inventory.Instance.AddCoins(deathCoins);
+            }
         }
     }
 

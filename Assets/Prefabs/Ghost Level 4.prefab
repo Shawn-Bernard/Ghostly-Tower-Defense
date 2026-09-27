@@ -165,7 +165,7 @@ MonoBehaviour:
   ghostAnimator: {fileID: 6819148287460580217}
   moveSpeed: 3
   distanceWaypointCheck: 0.01
-  damageAmount: 1
+  damageAmount: 5
   moveDirection: {x: 0, y: 0}
   waypointEvent: {fileID: 11400000, guid: 8eb43d352fd1f7e43b9150fa303a553a, type: 2}
   ghostEvent: {fileID: 11400000, guid: 67b698e8915f8fb40bb512e7c7297f8c, type: 2}
@@ -264,7 +264,20 @@ MonoBehaviour:
         m_CallState: 2
   onDamageTaken:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: 
+        m_MethodName: 
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   damagedSounds: []
   deathSounds:
   - {fileID: 8300000, guid: 6fb5d450e93058548af350fec9b69cfc, type: 3}
+  deathCoins: 20

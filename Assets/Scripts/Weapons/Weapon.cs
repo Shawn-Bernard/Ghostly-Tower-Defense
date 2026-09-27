@@ -3,6 +3,8 @@ using UnityEngine.Events;
 
 public class Weapon : MonoBehaviour, ISelectable
 {
+    [SerializeField] private int coinCost;
+
     [SerializeField] protected UnityEvent onSelectedWeapon;
     [SerializeField] protected UnityEvent onUnselectedWeapon;
     [SerializeField] protected UnityEvent onPickUp;
@@ -30,4 +32,10 @@ public class Weapon : MonoBehaviour, ISelectable
         isPlaced = true;
         onPlaced?.Invoke();
     }
+
+    public int GetCost()
+    {
+        return coinCost;
+    }
+
 }

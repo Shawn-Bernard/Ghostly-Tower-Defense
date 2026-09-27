@@ -58,7 +58,19 @@ MonoBehaviour:
       m_Calls: []
   pauseEvent:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: GameStateManager, Assembly-CSharp
+        m_MethodName: HandlePauseState
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &3918254867846777152
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -78,9 +90,11 @@ MonoBehaviour:
   - {fileID: 2300249139957236957, guid: fd67cfc85beb2814dbd5999cbd8f2df2, type: 3}
   - {fileID: 4992899337164637704, guid: a3b40497ebc5c9a4ea4387c022ccd207, type: 3}
   - {fileID: 1348580166861515383, guid: e37398da8f0774740b23fe1572f5d26d, type: 3}
-  maxTowerCount: 7
+  maxTowerCount: 12
   towerEvent: {fileID: 11400000, guid: 446ceae12205693429ce17b0dbe725f6, type: 2}
   selectedWeaponEvent: {fileID: 11400000, guid: 3ecb2c9b140159743a64a828ca61be8d, type: 2}
   towerPlacementDistance: 1
   gameplayState: {fileID: 11400000, guid: 3b36647d518becb4e9836c1078e316af, type: 2}
   towersStringEvent: {fileID: 11400000, guid: 4f0be09321d3985478615e5731245e55, type: 2}
+  startingCoins: 200
+  maxCoins: 1000

@@ -136,10 +136,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 669e5dadc5157c84d82039de6e250826, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::WaveManager
-  totalRounds: 6
+  totalRounds: 16
   spawnInterval: 0.5
-  enemiesPerWave: 3
-  totalWaves: 6
+  enemiesPerWave: 4
+  totalWaves: 4
   waveInterval: 2
   ghostDifficultyOffset: 1
   waypointEvent: {fileID: 11400000, guid: 8eb43d352fd1f7e43b9150fa303a553a, type: 2}

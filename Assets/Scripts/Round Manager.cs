@@ -5,7 +5,7 @@ using UnityEngine;
 public class RoundManager : MonoBehaviour
 {
     [Header("Round/Wave Settings")]
-    [Range(1,10)]
+    [Range(1,25)]
     [SerializeField] private int totalRounds;
     [SerializeField] private float spawnInterval; // Wait time for each enemy
     [SerializeField] private int enemiesPerWave; // How many enemies spawn per wave in a round
@@ -99,6 +99,7 @@ public class RoundManager : MonoBehaviour
             StartCoroutine(SpawnWaves());
             roundStringEvent.RaiseEvent(currentRound.ToString(), totalRounds.ToString());
             totalWaves++;
+            enemiesPerWave++;
         }
     }
 

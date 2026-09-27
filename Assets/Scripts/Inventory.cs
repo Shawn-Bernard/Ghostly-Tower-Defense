@@ -13,11 +13,21 @@ public class Inventory : MonoBehaviour
     [SerializeField] private float towerPlacementDistance;
     [SerializeField] private GameState gameplayState;
     [SerializeField] private StringEvent towersStringEvent;
-    
+    private int currentCoins;
+    [SerializeField] private int startingCoins;
+    [SerializeField] private int maxCoins;
+    public static Inventory Instance { get; private set; }
+
     private void Awake()
     {
+        if (Instance != null && Instance != this)
+        {
+            Destroy(gameObject);
+            return;
+        }
+        Instance = this;
         activeTowers = new List<Tower>();
-
+        currentCoins = startingCoins;
     }
 
     private void Update()
@@ -55,11 +65,12 @@ public class Inventory : MonoBehaviour
     private void SelectWeapon(int slotNumber)
     {
         if (loadout == null) return;
+        Weapon selectableToPlace = loadout[slotNumber];
 
-        if (activeTowers.Count <= maxTowerCount)
+        if (activeTowers.Count <= maxTowerCount && currentCoins >= selectableToPlace.GetCost())
         {
-            Weapon selectableToPlace = Instantiate(loadout[slotNumber]);
-            selectedWeaponEvent.RaiseEvent(selectableToPlace);
+            TakeOutCoins(selectableToPlace.GetCost());
+            selectedWeaponEvent.RaiseEvent(Instantiate(selectableToPlace));
         }
     }
 
@@ -94,10 +105,24 @@ public class Inventory : MonoBehaviour
         towersStringEvent.RaiseEvent(activeTowers.Count.ToString(), maxTowerCount.ToString());
         activeTowers.Add(tower);
     }
-
     private void RemoveTower(Tower tower)
     {
         activeTowers.Remove(tower);
+    }
+
+    public void AddCoins(int amount)
+    {
+        currentCoins = Mathf.Clamp(currentCoins + amount, 0, maxCoins);
+    }
+
+    public void TakeOutCoins(int amount)
+    {
+        currentCoins = Mathf.Clamp(currentCoins - amount, 0, maxCoins);
+    }
+
+    public int GetCurrentCoins()
+    {
+        return currentCoins;
     }
 
     private void DisableInputs()
