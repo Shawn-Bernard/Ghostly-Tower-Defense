@@ -7410,14 +7410,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player Base
       objectReference: {fileID: 0}
-    - target: {fileID: 2443120496193155136, guid: 2115b3095a20b21408face3ac14f5cd8, type: 3}
-      propertyPath: damagedSounds.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2443120496193155136, guid: 2115b3095a20b21408face3ac14f5cd8, type: 3}
-      propertyPath: 'damagedSounds.Array.data[0]'
-      value: 
-      objectReference: {fileID: 8300000, guid: 3523be2222222de4c877b8772f10acfe, type: 3}
     - target: {fileID: 8562698494710456760, guid: 2115b3095a20b21408face3ac14f5cd8, type: 3}
       propertyPath: m_LocalPosition.x
       value: 7.4699993

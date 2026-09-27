@@ -99,7 +99,6 @@ public class RoundManager : MonoBehaviour
             StartCoroutine(SpawnWaves());
             roundStringEvent.RaiseEvent(currentRound.ToString(), totalRounds.ToString());
             totalWaves++;
-            enemiesPerWave++;
         }
     }
 
