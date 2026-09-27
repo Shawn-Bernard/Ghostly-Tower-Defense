@@ -84,6 +84,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5367500239f5d854083ed32f6f596a11, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RangeTower
+  coinCost: 75
   onSelectedWeapon:
     m_PersistentCalls:
       m_Calls:

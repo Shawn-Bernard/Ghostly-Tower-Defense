@@ -327,6 +327,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a98b8607d4d536543ac17408464e0de9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::AoETower
+  coinCost: 135
   onSelectedWeapon:
     m_PersistentCalls:
       m_Calls:
@@ -394,7 +395,7 @@ MonoBehaviour:
   direction: {x: 0, y: 0}
   attackSounds:
   - {fileID: 8300000, guid: f29ea44a93a06d64189d1a4adbeace98, type: 3}
-  damageAmount: 2
+  damageAmount: 3
 --- !u!1 &4548991740482918673
 GameObject:
   m_ObjectHideFlags: 0

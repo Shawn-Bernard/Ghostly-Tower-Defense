@@ -83,6 +83,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a5f34636cc87e7847a7f55bba0d0b806, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Trap
+  coinCost: 65
   onSelectedWeapon:
     m_PersistentCalls:
       m_Calls:

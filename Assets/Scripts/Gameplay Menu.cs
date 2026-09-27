@@ -11,6 +11,13 @@ public class GameplayMenu : MonoBehaviour
     [SerializeField] private TextMeshProUGUI roundInfo;
     [SerializeField] private StringEvent roundStringEvent;
 
+    [SerializeField] private TextMeshProUGUI coinInfo;
+
+
+    private void Update()
+    {
+        coinInfo.text = $"Coins : {Inventory.Instance.GetCurrentCoins()}";
+    }
     private void SetBaseHealthText(string health)
     {
         baseHealth.text = $"Gate Health : {health}";
