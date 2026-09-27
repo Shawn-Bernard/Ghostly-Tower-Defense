@@ -265,3 +265,6 @@ MonoBehaviour:
   onDamageTaken:
     m_PersistentCalls:
       m_Calls: []
+  damagedSounds: []
+  deathSounds:
+  - {fileID: 8300000, guid: 6fb5d450e93058548af350fec9b69cfc, type: 3}

@@ -149,6 +149,10 @@ MonoBehaviour:
   towerEvent: {fileID: 11400000, guid: 446ceae12205693429ce17b0dbe725f6, type: 2}
   target: {fileID: 0}
   direction: {x: 0, y: 0}
+  attackSounds:
+  - {fileID: 8300000, guid: ff1a7b753549556418065e170b8e34b6, type: 3}
+  - {fileID: 8300000, guid: 9ed55bc76117ef649ba351ad98d3b70a, type: 3}
+  - {fileID: 8300000, guid: ed16dd7f8062e7d46aede6baa92aeb86, type: 3}
   bullet: {fileID: 5449704312246139590}
 --- !u!1 &3513340334847498319
 GameObject:

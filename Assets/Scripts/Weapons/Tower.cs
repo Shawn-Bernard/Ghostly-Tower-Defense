@@ -16,7 +16,7 @@ public class Tower : Weapon
     protected List<GameObject> targets;
     [SerializeField] protected GameObject target;
     [SerializeField] protected Vector2 direction;
-
+    [SerializeField] private AudioClip[] attackSounds;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -107,9 +107,15 @@ public class Tower : Weapon
     protected virtual IEnumerator Attack()
     {
         FindClosestTarget();
+
         towerAnimator.SetTrigger("isAttacking");
+
+        if (attackSounds != null) SoundManager.Instance.PlayRandomSounds(attackSounds);
+
         PerformAttack();
+
         canAttack = false;
+
         yield return new WaitForSeconds(attackCooldown);
         
         canAttack = true;
